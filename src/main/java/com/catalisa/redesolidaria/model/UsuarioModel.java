@@ -1,4 +1,4 @@
 package com.catalisa.redesolidaria.model;
 
-public class UsuarioPcdModel {
+public class UsuarioModel {
 }
