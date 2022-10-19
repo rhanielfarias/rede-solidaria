@@ -26,7 +26,7 @@ public class UsuarioService {
 
     }
 
-    private UsuarioDtoResponse atualizar(UsuarioModel usuarioModel, Long id){
+    public UsuarioDtoResponse atualizar(UsuarioModel usuarioModel, Long id){
 
         usuarioRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("ID not found " + id));
