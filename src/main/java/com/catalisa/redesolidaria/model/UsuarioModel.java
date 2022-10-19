@@ -1,6 +1,5 @@
 package com.catalisa.redesolidaria.model;
 
-import com.catalisa.redesolidaria.controller.TipoDaDeficienciaController;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,25 +19,27 @@ public class UsuarioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
-@Column
-    private  String nome;
+    @Column
+    private String nome;
 
-@Column
-    private  String cpf;
+    @Column
+    private String cpf;
 
-@Column
+    @Column
     private LocalDate dataDeNascimento;
 
-@Column
-    private  String email;
+    @Column
+    private String email;
 
-@OneToMany(mappedBy = "usuarioModel", cascade = CascadeType.ALL)
-private  List<TipoDaDeficienciaModel> tipoDaDeficienciaModels;
-@Column
-    private  double latitude;
+    @OneToMany(mappedBy = "usuarioModel", cascade = CascadeType.PERSIST)
+    List<TipoDaDeficienciaModel> tipoDaDeficienciaModels;
 
-@Column
-    private  double longitude;
+
+    @Column
+    private double latitude;
+
+    @Column
+    private double longitude;
 }
