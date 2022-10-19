@@ -1,5 +1,6 @@
 package com.catalisa.redesolidaria.model.dto;
 
+import com.catalisa.redesolidaria.Enums.Categorias;
 import com.catalisa.redesolidaria.model.TipoDaDeficienciaModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.List;
 public class UsuarioDtoResponse {
 
     private Long id;
+    private Categorias categoria;
     private String nome;
     private String email;
     private double latitude;
