@@ -1,5 +1,6 @@
 package com.catalisa.redesolidaria.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,7 @@ public class TipoDaDeficienciaModel {
     private Long id;
 
     private String tipoDaDeficiencia;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private UsuarioModel usuarioModel;

@@ -1,11 +1,13 @@
 package com.catalisa.redesolidaria.model;
 
+import com.catalisa.redesolidaria.Enums.Categorias;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,17 +26,21 @@ public class UsuarioModel {
     @Column
     private String nome;
 
-    @Column
+    @Column //posteriormente colocar a validação @CPF
     private String cpf;
 
     @Column
     private LocalDate dataDeNascimento;
 
-    @Column
+    @Column //posteriormente colocar a validação @Email
     private String email;
 
-    @OneToMany(mappedBy = "usuarioModel", cascade = CascadeType.PERSIST)
-    List<TipoDaDeficienciaModel> tipoDaDeficienciaModels;
+    @Column
+    private Categorias categoria;
+
+
+    @OneToMany(cascade = CascadeType.PERSIST)// por 'tipo de deficiencias' ser uma lista o Json deve ser preenchido como uma lista.
+    private List<TipoDaDeficienciaModel> tipoDaDeficienciaModels;
 
 
     @Column
