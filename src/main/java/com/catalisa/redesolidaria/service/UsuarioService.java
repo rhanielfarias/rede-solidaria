@@ -2,7 +2,7 @@ package com.catalisa.redesolidaria.service;
 
 import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
-import com.catalisa.redesolidaria.repository.UsuarioRepository;
+    import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
