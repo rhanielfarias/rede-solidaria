@@ -3,6 +3,7 @@ package com.catalisa.redesolidaria.controller;
 import com.catalisa.redesolidaria.model.TipoDaDeficienciaModel;
 import com.catalisa.redesolidaria.service.TipoDaDeficienciaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
