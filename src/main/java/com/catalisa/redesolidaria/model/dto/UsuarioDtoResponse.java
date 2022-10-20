@@ -18,6 +18,7 @@ public class UsuarioDtoResponse implements Serializable {
 
     private Long id;
     private Categorias categoria;
+    private List< TipoDaDeficienciaModel> tipoDaDeficiencia;
     private String nome;
     private String email;
     private double latitude;
