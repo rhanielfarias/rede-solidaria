@@ -6,10 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,8 +17,9 @@ public class UsuarioDtoResponse implements Serializable {
 
     private Long id;
     private Categorias categoria;
-    private List< TipoDaDeficienciaModel> tipoDaDeficiencia;
+    private List<TipoDaDeficienciaModel> tipoDaDeficiencia;
     private String nome;
+    private String telefone;
     private String email;
     private double latitude;
     private double longitude;

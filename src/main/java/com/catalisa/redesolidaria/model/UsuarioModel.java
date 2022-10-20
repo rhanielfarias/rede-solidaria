@@ -39,7 +39,15 @@ public class UsuarioModel implements Serializable {
     private String email;
 
     @Column
+    private String telefone;
+
+    @Column
     private Categorias categoria;
+
+    @Column
+    private String login;
+    @Column
+    private String senha;
 
 
     @OneToMany(cascade = CascadeType.PERSIST)// por 'tipo de deficiencias' ser uma lista o Json deve ser preenchido como uma lista.

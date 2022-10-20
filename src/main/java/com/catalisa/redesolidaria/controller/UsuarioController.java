@@ -2,6 +2,7 @@ package com.catalisa.redesolidaria.controller;
 
 import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
+import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,11 @@ public class UsuarioController {
     @PatchMapping(path = "/atualizar/{id}")
     public ResponseEntity<UsuarioDtoResponse> atualizar(@Valid @PathVariable Long id, @RequestBody UsuarioModel usuarioModel) {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.atualizar(usuarioModel, id));
+    }
 
+    @GetMapping(path = "/solicitacao/{id}")
+    public ResponseEntity<UsuarioDtoSolicitacao> solicitacaoAjuda(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.solicitarAjuda(id));
     }
 
     @DeleteMapping(path = "/{id}")
@@ -48,5 +53,4 @@ public class UsuarioController {
         usuarioService.deletar(id);
         return "Deletado";
     }
-
 }
