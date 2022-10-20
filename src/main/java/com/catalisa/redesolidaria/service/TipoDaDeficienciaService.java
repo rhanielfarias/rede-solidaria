@@ -10,14 +10,18 @@ import javax.persistence.EntityNotFoundException;
 @Service
 public class TipoDaDeficienciaService {
     @Autowired
-    TipoDaDeficienciaRepository   tipoDaDeficienciaRepository;
+    TipoDaDeficienciaRepository tipoDaDeficienciaRepository;
+
+    public TipoDaDeficienciaModel cadastrarTipoDaDeficiencia(TipoDaDeficienciaModel tipoDaDeficienciaModel) {
+        return tipoDaDeficienciaRepository.save(tipoDaDeficienciaModel);
+    }
 
 
-    public TipoDaDeficienciaModel atualizar(Long id, TipoDaDeficienciaModel tipoDaDeficienciaModel){
+    public TipoDaDeficienciaModel atualizar(Long id, TipoDaDeficienciaModel tipoDaDeficienciaModel) {
         tipoDaDeficienciaRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("ID not found " + id));
 
-       return tipoDaDeficienciaRepository.save(tipoDaDeficienciaModel);
+        return tipoDaDeficienciaRepository.save(tipoDaDeficienciaModel);
 
     }
 }
