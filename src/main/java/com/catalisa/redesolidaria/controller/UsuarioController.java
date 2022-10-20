@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,6 +17,17 @@ import java.util.Optional;
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
+
+
+    @GetMapping
+    public ResponseEntity<List<UsuarioDtoResponse>> buscarUsuarios(){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscar());
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<List<UsuarioDtoResponse>> buscaUsuarioPorId (@Valid @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarID(id)) ;
+    }
 
 
     @PostMapping(path = "/create")
@@ -28,12 +40,6 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDtoResponse> atualizar(@Valid @PathVariable Long id, @RequestBody UsuarioModel usuarioModel) {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.atualizar(usuarioModel, id));
 
-    }
-
-
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<Optional<UsuarioModel>> buscarPorId(@PathVariable Long id) {
-        return (ResponseEntity<Optional<UsuarioModel>>) ResponseEntity.ok(usuarioService.buscarId(id));
     }
 
     @DeleteMapping(path = "/{id}")

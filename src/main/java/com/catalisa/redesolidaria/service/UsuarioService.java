@@ -7,12 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    public List<UsuarioDtoResponse> buscar(){
+        List<UsuarioModel> buscarUsuario=usuarioRepository.findAll();
+        return buscarUsuario.stream().map(usuario -> new UsuarioDtoResponse(usuario.getId(),
+                usuario.getCategoria(),usuario.getTipoDaDeficiencia(), usuario.getNome(), usuario.getEmail(), usuario.getLatitude(),
+                usuario.getLongitude())).collect(Collectors.toList());
+    }
+
+    public List<UsuarioDtoResponse> buscarID(Long id){
+        Optional<UsuarioModel> usuario = Optional.of(usuarioRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("id não encontrado" + id)));
+        return usuario.stream().map(usuarioModel -> new UsuarioDtoResponse(usuario.get().getId(),
+                usuario.get().getCategoria(),usuario.get().getTipoDaDeficiencia(), usuario.get().getNome(), usuario.get().getEmail(),
+                usuario.get().getLatitude(), usuario.get().getLongitude())).collect(Collectors.toList());
+    }
 
     public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) {
 
@@ -40,11 +57,6 @@ public class UsuarioService {
 
         return usuarioDtoResponse;
 
-    }
-
-    public Optional<UsuarioModel> buscarId(Long id) {
-        return Optional.ofNullable(usuarioRepository.findById(id).orElseThrow
-                (() -> new EntityNotFoundException("id não encontrado" + id)));
     }
 
     public void deletar(Long id) {
