@@ -7,39 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
-    UsuarioModel usuarioModel;
 
-    public boolean validadorDeMenorDeIdade(UsuarioModel usuarioModel) {
-        LocalDate data = usuarioModel.getDataDeNascimento().plusYears(18);
-        LocalDate now = LocalDate.now();
-        return data.isBefore(now);
-    }
+    public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) {
 
-    public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) throws Exception {
+        usuarioRepository.save(usuarioModel);
 
+        UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
+                , usuarioModel.getCategoria(), usuarioModel.getTipoDaDeficiencia(), usuarioModel.getNome(),
+                usuarioModel.getEmail(), usuarioModel.getLatitude(),
+                usuarioModel.getLongitude());
 
-        Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
-        if (validandoIdade) {
-            usuarioRepository.save(usuarioModel);
-            UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
-                    , usuarioModel.getCategoria(), usuarioModel.getTipoDaDeficiencia(), usuarioModel.getNome(),
-                    usuarioModel.getEmail(), usuarioModel.getLatitude(),
-                    usuarioModel.getLongitude());
+        return usuarioDtoResponse;
 
-            return usuarioDtoResponse;
-        } else {
-            return null;
-        }
     }
 
     public UsuarioDtoResponse atualizar(UsuarioModel usuarioModel, Long id) {
-        usuarioModel.setTipoDaDeficiencia(null);
 
         usuarioRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("ID not found " + id));
@@ -53,4 +41,14 @@ public class UsuarioService {
         return usuarioDtoResponse;
 
     }
+
+    public Optional<UsuarioModel> buscarId(Long id) {
+        return Optional.ofNullable(usuarioRepository.findById(id).orElseThrow
+                (() -> new EntityNotFoundException("id não encontrado" + id)));
+    }
+
+    public void deletar(Long id) {
+        usuarioRepository.deleteById(id);
+    }
+
 }

@@ -23,4 +23,5 @@ public class TipoDaDeficienciaController {
     public TipoDaDeficienciaModel atualizar(@PathVariable Long id, @RequestBody TipoDaDeficienciaModel tipoDaDeficienciaModel) {
         return tipoDaDeficienciaService.atualizar(id, tipoDaDeficienciaModel);
     }
+
 }
