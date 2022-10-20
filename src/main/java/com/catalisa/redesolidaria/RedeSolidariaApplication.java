@@ -13,9 +13,4 @@ public class RedeSolidariaApplication {
 		SpringApplication.run(RedeSolidariaApplication.class, args);
 	}
 
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder(){
-		return new BCryptPasswordEncoder();
-	}
-
 }
