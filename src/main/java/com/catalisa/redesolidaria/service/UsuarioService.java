@@ -4,9 +4,14 @@ import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
     import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -26,7 +31,7 @@ public class UsuarioService {
 
     }
 
-    private UsuarioDtoResponse atualizar(UsuarioModel usuarioModel, Long id){
+    public UsuarioDtoResponse atualizar(UsuarioModel usuarioModel, Long id){
 
         usuarioRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("ID not found " + id));
@@ -40,4 +45,14 @@ public class UsuarioService {
         return usuarioDtoResponse;
 
     }
+
+    public Optional<UsuarioModel> buscarId(Long id) {
+        return Optional.ofNullable (usuarioRepository.findById (id).orElseThrow
+                (() -> new EntityNotFoundException ("id não encontrado" + id))) ;
+    }
+
+    public void deletar(Long id) {
+        usuarioRepository.deleteById(id);
+    }
+
 }
