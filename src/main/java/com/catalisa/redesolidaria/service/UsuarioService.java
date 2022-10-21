@@ -28,14 +28,12 @@ public class UsuarioService {
                 usuario.getLongitude())).collect(Collectors.toList());
     }
 
-    public List<UsuarioModel> buscarID(Long id) {
-        Optional<UsuarioModel> usuario = Optional.of(usuarioRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("id não encontrado" + id)));
-        return usuario.stream().map(usuarioModel -> new UsuarioDtoResponse(usuario.get().getId(),
-                usuario.get().getCategoria(), usuario.get().getTipoDaDeficiencia(), usuario.get().getNome(),
-                usuario.get().getTelefone(),usuario.get().getEmail(),
-                usuario.get().getLatitude(), usuario.get().getLongitude())).collect(Collectors.toList());
-    }
+    public List<UsuarioDtoResponse> buscarID(Long id) {
+       Optional<UsuarioModel> usuario = Optional.of(usuarioRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("id não encontrado" + id)));
+       return usuario.stream().map(usuarioModel -> new UsuarioDtoResponse(usuario.get().getId(),
+    usuario.get().getCategoria(), usuario.get().getTipoDaDeficiencia(), usuario.get().getNome(),usuario.get().getTelefone(),usuario.get().getEmail(),
+    usuario.get().getLatitude(), usuario.get().getLongitude())).collect(Collectors.toList());
+   }
 
     public boolean validadorDeMenorDeIdade(UsuarioModel usuarioModel) {
         LocalDate data = usuarioModel.getDataDeNascimento().plusYears(18);

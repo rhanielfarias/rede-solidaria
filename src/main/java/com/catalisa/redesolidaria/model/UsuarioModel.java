@@ -55,7 +55,7 @@ public class UsuarioModel implements Serializable {
     private String senha;
 
     @OneToMany(cascade = CascadeType.PERSIST)
-// por 'tipo de deficiencias' ser uma lista o Json deve ser preenchido como uma lista.
+// por tipo de deficiencias' ser uma lista o Json deve ser preenchido como uma lista.
     private List<TipoDaDeficienciaModel> tipoDaDeficiencia;
 
     @Column(nullable = false)

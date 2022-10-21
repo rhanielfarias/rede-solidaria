@@ -1,6 +1,7 @@
 package com.catalisa.redesolidaria.service;
 
 import com.catalisa.redesolidaria.model.UsuarioModel;
+import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,7 +43,7 @@ public class UsuarioServiceTest {
     void buscarCadastros() {
         List<UsuarioModel> usuarioModels = new ArrayList<> ();
         Mockito.when(usuarioRepository.findAll()).thenReturn((List<UsuarioModel>) usuarioModel);
-        List<UsuarioModel> listaDeUsuarios = usuarioService.buscarID (usuarioModel.getId ());
+        List<UsuarioDtoResponse> listaDeUsuarios = usuarioService.buscar ();
         Assertions.assertEquals(listaDeUsuarios,usuarioModel);
     }
 }
