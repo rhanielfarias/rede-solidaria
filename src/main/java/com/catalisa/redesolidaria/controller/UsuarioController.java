@@ -32,7 +32,7 @@ public class UsuarioController {
 
 
     @PostMapping(path = "/create")
-    public ResponseEntity<UsuarioDtoResponse> cadastrarUsuario(@RequestBody UsuarioModel usuarioModel) throws Exception {
+    public ResponseEntity<UsuarioDtoResponse> cadastrarUsuario(@RequestBody @Valid  UsuarioModel usuarioModel) throws Exception {
         UsuarioDtoResponse usuario = usuarioService.cadastrar(usuarioModel);
         return new ResponseEntity<>(usuario, HttpStatus.CREATED);
     }

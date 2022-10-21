@@ -6,9 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -26,37 +28,39 @@ public class UsuarioModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @NotBlank(message = "Informe o nome")
     private String nome;
 
-    @Column //posteriormente colocar a validação @CPF
+    @NotBlank(message = "Colocar CPF válido")
+    @CPF
     private String cpf;
 
-    @Column
+    @Column(length = 50, nullable = false)
     private LocalDate dataDeNascimento;
 
-    @Column //posteriormente colocar a validação @Email
+    @NotBlank(message = "Colocar e-mail válido")
+    @Email
     private String email;
 
-    @Column
+    @Column(length = 30, nullable = false)
     private String telefone;
 
     @Column
     private Categorias categoria;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String login;
-    @Column
+
+    @Column(nullable = false)
     private String senha;
 
-
-    @OneToMany(cascade = CascadeType.PERSIST)// por 'tipo de deficiencias' ser uma lista o Json deve ser preenchido como uma lista.
+    @OneToMany(cascade = CascadeType.PERSIST)
+// por 'tipo de deficiencias' ser uma lista o Json deve ser preenchido como uma lista.
     private List<TipoDaDeficienciaModel> tipoDaDeficiencia;
 
-
-    @Column
+    @Column(nullable = false)
     private double latitude;
 
-    @Column
+    @Column(nullable = false)
     private double longitude;
 }
