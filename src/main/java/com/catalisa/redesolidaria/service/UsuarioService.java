@@ -46,6 +46,8 @@ public class UsuarioService {
 
     public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) {
 
+
+
         Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
         usuarioModel.setSenha(SecurityConfiguration.passwordEncoder().encode(usuarioModel.getSenha()));
         if (validandoIdade) {
