@@ -22,6 +22,7 @@ public class TipoDaDeficienciaModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+@Column
     private String tipoDaDeficiencia;
     @JsonIgnore
     @ManyToOne
