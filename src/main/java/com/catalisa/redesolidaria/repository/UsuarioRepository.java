@@ -11,4 +11,5 @@ import java.util.List;
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
     public List< UsuarioModel> findByCategoria(Categorias categorias);
 
+
 }

@@ -5,6 +5,7 @@ import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.repository.UsuarioRepository;
+import com.catalisa.redesolidaria.security.SecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +46,8 @@ public class UsuarioService {
 
     public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) {
 
-
         Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
+        usuarioModel.setSenha(SecurityConfiguration.passwordEncoder().encode(usuarioModel.getSenha()));
         if (validandoIdade) {
             usuarioRepository.save(usuarioModel);
             UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
@@ -67,7 +68,6 @@ public class UsuarioService {
         atualizar.setLatitude(usuarioModel.getLatitude());
         atualizar.setLongitude(usuarioModel.getLongitude());
 
-
         usuarioRepository.save(atualizar);
 
         UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(atualizar.getId()
@@ -76,7 +76,6 @@ public class UsuarioService {
                 atualizar.getLongitude());
 
         return usuarioDtoResponse;
-
     }
 
     public void deletar(Long id) {
@@ -104,6 +103,7 @@ public class UsuarioService {
                 return voluntarioSelecionado;
             }
         }
-        throw new RuntimeException("Deu ruim");
+        throw new RuntimeException("Nenhum voluntário encontrado!");
     }
+
 }
