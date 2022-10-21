@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/usuarios")
@@ -48,9 +47,9 @@ public class UsuarioController {
     }
 
     @DeleteMapping(path = "/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deletar(@PathVariable Long id) {
         usuarioService.deletar(id);
-        return "Deletado";
+        return "Usuário deletado com sucesso!";
     }
+
 }
