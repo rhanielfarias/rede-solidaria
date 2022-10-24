@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/usuarios")
@@ -21,18 +20,18 @@ public class UsuarioController {
 
 
     @GetMapping
-    public ResponseEntity<List<UsuarioDtoResponse>> buscarUsuarios(){
+    public ResponseEntity<List<UsuarioDtoResponse>> buscarUsuarios() {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscar());
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<List<UsuarioDtoResponse>> buscaUsuarioPorId (@Valid @PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarID(id)) ;
+    public ResponseEntity<List<UsuarioDtoResponse>> buscaUsuarioPorId(@Valid @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarID(id));
     }
 
 
     @PostMapping(path = "/create")
-    public ResponseEntity<UsuarioDtoResponse> cadastrarUsuario(@RequestBody @Valid  UsuarioModel usuarioModel) throws Exception {
+    public ResponseEntity<UsuarioDtoResponse> cadastrarUsuario(@RequestBody @Valid UsuarioModel usuarioModel) throws Exception {
         UsuarioDtoResponse usuario = usuarioService.cadastrar(usuarioModel);
         return new ResponseEntity<>(usuario, HttpStatus.CREATED);
     }
@@ -43,14 +42,14 @@ public class UsuarioController {
     }
 
     @GetMapping(path = "/solicitacao/{id}")
-    public ResponseEntity<UsuarioDtoSolicitacao> solicitacaoAjuda(@PathVariable Long id){
+    public ResponseEntity<UsuarioDtoSolicitacao> solicitacaoAjuda(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.solicitarAjuda(id));
     }
 
     @DeleteMapping(path = "/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deletar(@PathVariable Long id) {
         usuarioService.deletar(id);
-        return "Deletado";
+        return "Usuário deletado com sucesso!";
     }
+
 }
