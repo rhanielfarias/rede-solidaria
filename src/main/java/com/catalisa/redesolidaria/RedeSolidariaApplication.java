@@ -1,4 +1,4 @@
-package com.catalisa.redesolidaria;
+         package com.catalisa.redesolidaria;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
