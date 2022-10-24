@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
-    public List< UsuarioModel> findByCategoria(Categorias categorias);
+    public List<UsuarioModel> findByCategoria(Categorias categorias);
 
 
 }
