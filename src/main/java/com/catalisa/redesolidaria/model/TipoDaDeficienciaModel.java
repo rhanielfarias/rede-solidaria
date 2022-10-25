@@ -1,5 +1,6 @@
 package com.catalisa.redesolidaria.model;
 
+import com.catalisa.redesolidaria.Enums.TiposDeDeficiencia;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,9 +24,6 @@ public class TipoDaDeficienciaModel implements Serializable {
     private Long id;
 
     @Column
-    private String tipoDaDeficiencia;
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private UsuarioModel usuarioModel;
+    private TiposDeDeficiencia tiposDeDeficiencia;
+
 }
