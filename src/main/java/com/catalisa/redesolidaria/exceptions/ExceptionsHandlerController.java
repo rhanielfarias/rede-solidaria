@@ -44,7 +44,7 @@ public class ExceptionsHandlerController {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> exceptionHandlerEntradaInvalida(HttpMessageNotReadableException ex) {
-        return new ResponseEntity<>("Compo digitado inválido", HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>("Campo digitado inválido", HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(NoSuchElementException.class)
