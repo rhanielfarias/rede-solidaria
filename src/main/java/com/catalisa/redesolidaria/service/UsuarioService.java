@@ -24,16 +24,18 @@ public class UsuarioService {
     public List<UsuarioDtoResponse> buscar() {
         List<UsuarioModel> buscarUsuario = usuarioRepository.findAll();
         return buscarUsuario.stream().map(usuario -> new UsuarioDtoResponse(usuario.getId(),
-                usuario.getCategoria(), usuario.getTipoDaDeficiencia(), usuario.getNome(), usuario.getTelefone(),usuario.getEmail(), usuario.getLatitude(),
+                usuario.getCategoria(), usuario.getTipoDaDeficiencia(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
                 usuario.getLongitude())).collect(Collectors.toList());
     }
 
     public List<UsuarioDtoResponse> buscarID(Long id) {
-       Optional<UsuarioModel> usuario = Optional.of(usuarioRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("id não encontrado" + id)));
-       return usuario.stream().map(usuarioModel -> new UsuarioDtoResponse(usuario.get().getId(),
-    usuario.get().getCategoria(), usuario.get().getTipoDaDeficiencia(), usuario.get().getNome(),usuario.get().getTelefone(),usuario.get().getEmail(),
-    usuario.get().getLatitude(), usuario.get().getLongitude())).collect(Collectors.toList());
-   }
+        Optional<UsuarioModel> usuario = Optional.of(usuarioRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("id não encontrado" + id)));
+        return usuario.stream().map(usuarioModel -> new UsuarioDtoResponse(usuario.get().getId(),
+                usuario.get().getCategoria(), usuario.get().getTipoDaDeficiencia(), usuario.get().getNome(),
+                usuario.get().getTelefone(), usuario.get().getEmail(),
+                usuario.get().getLatitude(), usuario.get().getLongitude())).collect(Collectors.toList());
+    }
 
     public boolean validadorDeMenorDeIdade(UsuarioModel usuarioModel) {
         LocalDate data = usuarioModel.getDataDeNascimento().plusYears(18);
@@ -44,13 +46,14 @@ public class UsuarioService {
 
     public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) {
 
+
         Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
         usuarioModel.setSenha(SecurityConfiguration.passwordEncoder().encode(usuarioModel.getSenha()));
         if (validandoIdade) {
             usuarioRepository.save(usuarioModel);
             UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
                     , usuarioModel.getCategoria(), usuarioModel.getTipoDaDeficiencia(), usuarioModel.getNome(),
-                    usuarioModel.getTelefone(),usuarioModel.getEmail(), usuarioModel.getLatitude(),
+                    usuarioModel.getTelefone(), usuarioModel.getEmail(), usuarioModel.getLatitude(),
                     usuarioModel.getLongitude());
 
             return usuarioDtoResponse;
@@ -69,7 +72,7 @@ public class UsuarioService {
         usuarioRepository.save(atualizar);
 
         UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(atualizar.getId()
-                , atualizar.getCategoria(), atualizar.getTipoDaDeficiencia(), atualizar.getNome(),atualizar.getTelefone(),
+                , atualizar.getCategoria(), atualizar.getTipoDaDeficiencia(), atualizar.getNome(), atualizar.getTelefone(),
                 atualizar.getEmail(), atualizar.getLatitude(),
                 atualizar.getLongitude());
 
@@ -89,14 +92,14 @@ public class UsuarioService {
         UsuarioModel usuarioSolicitante = usuarioRepository.findById(id).get();
         List<UsuarioModel> usuarioVoluntarios = usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
 
-        for (UsuarioModel voluntario : usuarioVoluntarios){
+        for (UsuarioModel voluntario : usuarioVoluntarios) {
             double distancia = CaculadoresDeDistancia.calculaDistancia(usuarioSolicitante.getLatitude(),
                     usuarioSolicitante.getLongitude(),
                     voluntario.getLatitude(), voluntario.getLongitude());
-            if (distancia < menorDistancia){
+            if (distancia < menorDistancia) {
                 menorDistancia = distancia;
                 voluntarioMaisProximo = voluntario;
-                UsuarioDtoSolicitacao voluntarioSelecionado = new UsuarioDtoSolicitacao(voluntario.getId(),voluntario.getNome(),
+                UsuarioDtoSolicitacao voluntarioSelecionado = new UsuarioDtoSolicitacao(voluntario.getId(), voluntario.getNome(),
                         voluntario.getTelefone());
                 return voluntarioSelecionado;
             }
