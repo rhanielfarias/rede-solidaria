@@ -44,12 +44,12 @@ public class ExceptionsHandlerController {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> exceptionHandlerEntradaInvalida(HttpMessageNotReadableException ex) {
-        return new ResponseEntity<>("Compo digitado inválido", HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>("Campo digitado inválido", HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> exceptionHandlerContaNaoCadastrada(NoSuchElementException ex) {
-        return new ResponseEntity<>("Id de conta não existente no banco de dados.", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Id de usuário não existente no banco de dados.", HttpStatus.NOT_FOUND);
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentTypeMismatchException.class)
@@ -59,7 +59,7 @@ public class ExceptionsHandlerController {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(EmptyResultDataAccessException.class)
     public ResponseEntity<String> exceptionIdNaoExistente(EmptyResultDataAccessException ex) {
-        return new ResponseEntity<>("Id de conta não existente no banco de dados.", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Id de usuário não existente no banco de dados.", HttpStatus.NOT_FOUND);
     }
 
 }
