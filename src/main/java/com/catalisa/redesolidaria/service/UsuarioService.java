@@ -24,7 +24,7 @@ public class UsuarioService {
     public List<UsuarioDtoResponse> buscar() {
         List<UsuarioModel> buscarUsuario = usuarioRepository.findAll();
         return buscarUsuario.stream().map(usuario -> new UsuarioDtoResponse(usuario.getId(),
-                usuario.getCategoria(), usuario.getTiposDeDeficiencia(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
+                usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
                 usuario.getLongitude())).collect(Collectors.toList());
     }
 
@@ -32,7 +32,7 @@ public class UsuarioService {
         Optional<UsuarioModel> usuario = Optional.of(usuarioRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("id não encontrado" + id)));
         return usuario.stream().map(usuarioModel -> new UsuarioDtoResponse(usuario.get().getId(),
-                usuario.get().getCategoria(), usuario.get().getTiposDeDeficiencia(), usuario.get().getNome(),
+                usuario.get().getCategoria(), usuario.get().getDeficiencias(), usuario.get().getNome(),
                 usuario.get().getTelefone(), usuario.get().getEmail(),
                 usuario.get().getLatitude(), usuario.get().getLongitude())).collect(Collectors.toList());
     }
@@ -51,7 +51,7 @@ public class UsuarioService {
         if (validandoIdade) {
             usuarioRepository.save(usuarioModel);
             UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
-                    , usuarioModel.getCategoria(), usuarioModel.getTiposDeDeficiencia(), usuarioModel.getNome(),
+                    , usuarioModel.getCategoria(), usuarioModel.getDeficiencias(), usuarioModel.getNome(),
                     usuarioModel.getTelefone(), usuarioModel.getEmail(), usuarioModel.getLatitude(),
                     usuarioModel.getLongitude());
 
@@ -71,7 +71,7 @@ public class UsuarioService {
         usuarioRepository.save(atualizar);
 
         UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(atualizar.getId()
-                , atualizar.getCategoria(), atualizar.getTiposDeDeficiencia(), atualizar.getNome(), atualizar.getTelefone(),
+                , atualizar.getCategoria(), atualizar.getDeficiencias(), atualizar.getNome(), atualizar.getTelefone(),
                 atualizar.getEmail(), atualizar.getLatitude(),
                 atualizar.getLongitude());
 

@@ -1,7 +1,6 @@
 package com.catalisa.redesolidaria.model;
 
 import com.catalisa.redesolidaria.Enums.Categorias;
-import com.catalisa.redesolidaria.Enums.TiposDeDeficiencia;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -54,13 +53,13 @@ public class UsuarioModel implements Serializable {
     @Column(nullable = false)
     private String senha;
 
-    @Column
-    @Enumerated (value = EnumType.STRING)
-    private TiposDeDeficiencia tiposDeDeficiencia;
-
     @Column(nullable = false)
     private double latitude;
 
     @Column(nullable = false)
     private double longitude;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+// por 'tipo de deficiencias' ser uma lista o Json deve ser preenchido como uma lista.
+    private List<TipoDaDeficienciaModel> deficiencias;
 }

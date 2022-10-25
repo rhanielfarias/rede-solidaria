@@ -1,14 +1,11 @@
 package com.catalisa.redesolidaria.model.dto;
 
 import com.catalisa.redesolidaria.Enums.Categorias;
-import com.catalisa.redesolidaria.Enums.TiposDeDeficiencia;
 import com.catalisa.redesolidaria.model.TipoDaDeficienciaModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,8 +17,7 @@ public class UsuarioDtoResponse implements Serializable {
 
     private Long id;
     private Categorias categoria;
-    @Enumerated(value = EnumType.STRING)
-    private TiposDeDeficiencia tiposDeDeficiencia;
+    private List<TipoDaDeficienciaModel> deficiencias;
     private String nome;
     private String telefone;
     private String email;
