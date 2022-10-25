@@ -39,9 +39,10 @@ public class UsuarioServiceTest {
         Mockito.when(usuarioRepository.existsById(Mockito.anyLong())).thenReturn(true);
         Mockito.verify(usuarioRepository, Mockito.times(1)).save(usuarioModel);
     }
+
     @Test
     void buscarCadastros() {
-        List<UsuarioModel> usuarioModels = new ArrayList<> ();
+        List<UsuarioModel> usuarioModel = new ArrayList<> ();
         Mockito.when(usuarioRepository.findAll()).thenReturn((List<UsuarioModel>) usuarioModel);
         List<UsuarioDtoResponse> listaDeUsuarios = usuarioService.buscar ();
         Assertions.assertEquals(listaDeUsuarios,usuarioModel);
