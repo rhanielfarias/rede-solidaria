@@ -42,10 +42,10 @@ public class ExceptionsHandlerController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
-//    @org.springframework.web.bind.annotation.ExceptionHandler(HttpMessageNotReadableException.class)
-//    public ResponseEntity<String> exceptionHandlerEntradaInvalida(HttpMessageNotReadableException ex) {
-//        return new ResponseEntity<>("Campo digitado inválido", HttpStatus.UNPROCESSABLE_ENTITY);
-//    }
+    @org.springframework.web.bind.annotation.ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<String> exceptionHandlerEntradaInvalida(HttpMessageNotReadableException ex) {
+        return new ResponseEntity<>("Campo digitado inválido", HttpStatus.UNPROCESSABLE_ENTITY);
+    }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> exceptionHandlerContaNaoCadastrada(NoSuchElementException ex) {

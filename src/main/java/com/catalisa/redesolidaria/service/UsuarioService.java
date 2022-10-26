@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -104,6 +105,16 @@ public class UsuarioService {
             }
         }
         throw new RuntimeException("Nenhum voluntário encontrado!");
+    }
+
+    public List<UsuarioDtoSolicitacao> buscaVoluntarios(UsuarioModel usuarioModel){
+       List<UsuarioModel> usuarios =  usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
+       List<UsuarioDtoSolicitacao> usuariosDto = new ArrayList<>();
+        for (UsuarioModel u:usuarios) {
+            UsuarioDtoSolicitacao novoUsuario = new UsuarioDtoSolicitacao(u.getId(),u.getNome(),u.getTelefone());
+            usuariosDto.add(novoUsuario);
+        }
+       return usuariosDto;
     }
 
 }

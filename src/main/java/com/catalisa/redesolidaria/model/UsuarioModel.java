@@ -45,6 +45,7 @@ public class UsuarioModel implements Serializable {
     private String telefone;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Categorias categoria;
 
     @Column(nullable = false, unique = true)
