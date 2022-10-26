@@ -1,15 +1,18 @@
 package com.catalisa.redesolidaria.service;
 
 import com.catalisa.redesolidaria.Enums.Categorias;
+import com.catalisa.redesolidaria.exceptions.ServiceExc;
 import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.repository.UsuarioRepository;
+import com.catalisa.redesolidaria.security.Criptografia;
 import com.catalisa.redesolidaria.security.SecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,10 +48,11 @@ public class UsuarioService {
     }
 
 
-    public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) {
+    public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) throws Exception {
 
         Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
-        usuarioModel.setSenha(SecurityConfiguration.passwordEncoder().encode(usuarioModel.getSenha()));
+        usuarioModel.setSenha(Criptografia.md5(usuarioModel.getSenha()));
+        //usuarioModel.setSenha(SecurityConfiguration.passwordEncoder().encode(usuarioModel.getSenha()));
         if (validandoIdade) {
             usuarioRepository.save(usuarioModel);
             UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
@@ -115,6 +119,11 @@ public class UsuarioService {
             usuariosDto.add(novoUsuario);
         }
        return usuariosDto;
+    }
+
+    public UsuarioModel loginUser(String login, String senha) throws ServiceExc {
+        UsuarioModel userLogin =usuarioRepository.buscarLogin(login, senha);
+        return userLogin;
     }
 
 }
