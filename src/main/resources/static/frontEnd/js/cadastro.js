@@ -22,3 +22,9 @@
             .then(data => console.log(data))
             .catch(error => console.log(error));
     });
+
+    function msg() {
+        alert("Salvo com sucesso!");
+        window.location.reload(true)
+        window.location.href="login.html";
+      };

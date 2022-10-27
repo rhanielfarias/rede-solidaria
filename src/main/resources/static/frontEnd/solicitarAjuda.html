@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-    <!-- Required meta tags -->
+<head >  <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://kit.fontawesome.com/006642858d.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/frontEnd/css/styles.css">
     <link rel="icon" href="/frontEnd/img/log.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!--<link rel="stylesheet" href="/static/css/styles.css">-->
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap"
           rel="stylesheet">
-    <title>Solicitar Ajuda</title>
+    <title>Cadastro de Usuário</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5b4009;">
     <a class="navbar-brand" href="index.html">
-        <img href="index.html" class="imgNav" src="/frontEnd/img/log.png" width="100px"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbMobile"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img href="index.html" class="imgNav" src="/frontEnd/img/log.png" width="100px" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbMobile" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="navbar-collapse collapse justify-content-end" id="navbMobile">
-        <a href="index.html" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/index.html" id="hoverBtn"><i
-                class="fas fa-home"></i> Home</a>
-        <a class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/cadastrarUsuario.html" id="hoverBtn"><i
-                class="fas fa-user"></i> Cadastrar Usuário</a>
-        <a data-toggle="modal" data-target="#modalPesquisa" class="btn-nav nav-link nav-item"
-           style="letter-spacing: 2px;" href="/frontEnd/solicitarAjuda.html" id="hoverBtn"> <i class="fas fa-search"></i> Solicitar Ajuda</a>
+        <a href="index.html" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;"  id="hoverBtn"><i class="fas fa-home"></i> Home</a>
+        <a class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/cadastrarUsuario.html" id="hoverBtn"><i class="fas fa-user"></i> Cadastrar Usuário</a>
+        <a data-toggle="modal" data-target="#modalPesquisa" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/solicitarAjuda.html" id="hoverBtn"> <i class="fas fa-search"></i> Solicitar Ajuda</a>
 
         <form action="/logout" method="post">
-            <button type="submit" class="btn-nav nav-link nav-item btn-danger" style="letter-spacing: 2px;"><i
-                    class="fa fa-sign-out" aria-hidden="true"></i> Sair
-            </button>
+            <button type="submit" class="btn-nav nav-link nav-item btn-danger" style="letter-spacing: 2px;"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</button>
         </form>
     </div>
 </nav>
 
 <div class="container" style="margin-top: 50px;">
+    <h4><i class="fa fa-plus" aria-hidden="true"></i>SOLICITAR AJUDA</h4>
     <hr>
     <section>
 
