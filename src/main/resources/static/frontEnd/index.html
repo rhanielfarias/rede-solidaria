@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
-<head >
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/frontEnd/css/styles.css">
+    <link rel="stylesheet" href="/frontEnd/css/stylesIndex.css">
     <link rel="icon" href="/frontEnd/img/log.png">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap"
           rel="stylesheet">
@@ -18,21 +18,58 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5b4009;">
     <a class="navbar-brand" href="index.html">
-        <img href="index.html" class="imgNav" src="/frontEnd/img/log.png" width="100px" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbMobile" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img href="index.html" class="imgNav" src="/frontEnd/img/log.png" width="100px"/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbMobile"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="navbar-collapse collapse justify-content-end" id="navbMobile">
-        <a href="index.html" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;"  id="hoverBtn"><i class="fas fa-home"></i> Home</a>
-        <a class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/cadastrarUsuario.html" id="hoverBtn"><i class="fas fa-user"></i> Cadastrar Usuário</a>
-        <a data-toggle="modal" data-target="#modalPesquisa" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/solicitarAjuda.html"id="hoverBtn"> <i class="fas fa-search"></i> Solicitar AJuda</a>
+        <a href="index.html" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/index.html" id="hoverBtn"><i
+                class="fas fa-home"></i> Home</a>
+        <a class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/cadastrarUsuario.html"
+           id="hoverBtn"><i class="fas fa-user"></i> Cadastrar Usuário</a>
+        <a data-toggle="modal" data-target="#modalPesquisa" class="btn-nav nav-link nav-item"
+           style="letter-spacing: 2px;" href="/frontEnd/solicitarAjuda.html" id="hoverBtn"> <i
+                class="fas fa-search"></i> Solicitar AJuda</a>
 
         <form action="/logout" method="post">
-            <button type="submit" class="btn-nav nav-link nav-item btn-danger" style="letter-spacing: 2px;"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</button>
+            <button type="submit" class="btn-nav nav-link nav-item btn-danger" style="letter-spacing: 2px;"><i
+                    class="fa fa-sign-out" aria-hidden="true"></i> Sair
+            </button>
         </form>
     </div>
 </nav>
+
+<div class="content">
+    <div class="slides">
+        <input type="radio" name="slide" id="slide1" checked>
+        <input type="radio" name="slide" id="slide2">
+        <input type="radio" name="slide" id="slide3">
+        <input type="radio" name="slide" id="slide4">
+
+        <div class="slide s1" >
+            <img src="/frontEnd/img/rede-localizações.jpg" alt="rede-localizações">
+        </div>
+        <div class="slide">
+            <img src="/frontEnd/img/DV atravessando rua com ajuda.jpg" alt="Deficiente Visual atravessando rua com ajuda">
+        </div>
+        <div class="slide">
+            <img src="/frontEnd/img/homem-sobre-fundo-isolado_1368-343790.jpg" alt="homem-sobre-fundo-isolado-mão-sobre-os-olhos-e-camisa-com-escrita-volunter.">
+        </div>
+        <div class="slide">
+            <img src="/frontEnd/img/beautiful-young-female-volunteer-is-holding-box_85574-5716.jpg" alt="beautiful-young-female-volunteer">
+        </div>
+    </div>
+</div>
+
+<div class="navigation">
+    <label class="bar" for="slide1"></label>
+    <label class="bar" for="slide2"></label>
+    <label class="bar" for="slide3"></label>
+    <label class="bar" for="slide4"></label>
+
+</div>
 
 </body>
 </html>
