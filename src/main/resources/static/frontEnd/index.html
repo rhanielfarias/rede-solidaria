@@ -15,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/frontEnd/css/styles.css">
+    <link rel="stylesheet" href="/frontEnd/css/stylesIndex.css">
+
     <link rel="icon" href="/frontEnd/img/log.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +24,7 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap"
           rel="stylesheet">
-    <title>Cadastro de Usuário</title>
+    <title>Rede Solidária</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5b4009;">
@@ -36,23 +38,43 @@
     <div class="navbar-collapse collapse justify-content-end" id="navbMobile">
         <a href="index.html" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/index.html" id="hoverBtn"><i
                 class="fas fa-home"></i> Home</a>
-        <a class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/cadastrarUsuario.html"
-           id="hoverBtn"><i class="fas fa-user"></i> Cadastrar Usuário</a>
-        <a data-toggle="modal" data-target="#modalPesquisa" class="btn-nav nav-link nav-item"
-           style="letter-spacing: 2px;" href="/frontEnd/solicitarAjuda.html" id="hoverBtn"> <i
-                class="fas fa-search"></i> Solicitar AJuda</a>
 
-        <form action="/logout" method="post">
-            <button type="submit" class="btn-nav nav-link nav-item btn-danger" style="letter-spacing: 2px;"><i
-                    class="fa fa-sign-out" aria-hidden="true"></i> Sair
-            </button>
-        </form>
+        <a class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/login.html"
+           id="hoverBtn"><i class="fa fa-sign-in" aria-hidden="true"></i> Faça o Login ou Cadastre-se</a>
+
     </div>
 </nav>
 
-<div class="container" style="margin-top: 50px;">
-    <h4><i class="fa fa-plus" aria-hidden="true"></i>HOME</h4>
-    <hr>
+
+    <div class="content">
+        <div class="slides">
+            <input type="radio" name="slide" id="slide1" checked>
+            <input type="radio" name="slide" id="slide2">
+            <input type="radio" name="slide" id="slide3">
+            <input type="radio" name="slide" id="slide4">
+
+            <div class="slide s1" >
+                <img src="/frontEnd/img/rede-localizações.jpg" alt="rede-localizações">
+            </div>
+            <div class="slide">
+                <img src="/frontEnd/img/DV atravessando rua com ajuda.jpg" alt="Deficiente Visual atravessando rua com ajuda">
+            </div>
+            <div class="slide">
+                <img src="/frontEnd/img/homem-sobre-fundo-isolado_1368-343790.jpg" alt="homem-sobre-fundo-isolado-mão-sobre-os-olhos-e-camisa-com-escrita-volunter.">
+            </div>
+            <div class="slide">
+                <img src="/frontEnd/img/beautiful-young-female-volunteer-is-holding-box_85574-5716.jpg" alt="beautiful-young-female-volunteer">
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <label class="bar" for="slide1"></label>
+        <label class="bar" for="slide2"></label>
+        <label class="bar" for="slide3"></label>
+        <label class="bar" for="slide4"></label>
+
+    </div>
 
 </body>
 </html>

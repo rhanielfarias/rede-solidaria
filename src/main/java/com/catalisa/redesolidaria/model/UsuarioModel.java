@@ -60,7 +60,7 @@ public class UsuarioModel implements Serializable {
     @Column(nullable = false)
     private double longitude;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy ="usuarioModel", cascade = CascadeType.PERSIST)
 // por 'tipo de deficiencias' ser uma lista o Json deve ser preenchido como uma lista.
     private List<TipoDaDeficienciaModel> deficiencias;
 }

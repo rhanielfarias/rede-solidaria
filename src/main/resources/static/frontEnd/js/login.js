@@ -13,11 +13,8 @@ form.addEventListener('submit', event => {
         },
         body: JSON.stringify(data)
     }).then(res => res.json())
-        .then(data => window.location.href = "index.html")
-        .catch(error => console.log(error));
-});
+        .then(data => window.location.href = "solicitarAjuda.html")//precisamos que esse caminho so retorne caso seja um
+        //usuário a ter efetuado o login.
+         .catch(error => alert("Login ou senha inválida!"));
+    });
 
-function msg() {
-    alert("Salvo com sucesso!");
-    window.location.reload(true);
-  }

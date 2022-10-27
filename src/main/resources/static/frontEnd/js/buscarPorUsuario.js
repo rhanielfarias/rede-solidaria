@@ -1,35 +1,40 @@
-    const form1 = document.getElementById("usuario")
-    const idUser = document.querySelector("#id");
-    const id = idUser.value;
-        console.log(id);
+        const form1 = document.getElementById("usuario")
+
+        const idUser = document.querySelector("#id");
 
         form1.addEventListener('click', (e) =>{
         const id = idUser.value;
         console.log(id);
 
 
-       const options = {
+        const options = {
         method: 'GET',
         cache: 'default'
        }
 
+
         fetch(`http://localhost:8080/usuarios/${id}`, options)
-        .then(response => {response.json()
-        .then(data => atribuirCampos(data))
-        })
-        .catch(e => console.log("Deu erro: " + e))
-        })
+                .then(response => {response.json()
+                .then(data => atribuirCampos(data))
+                })
+                .catch(e => console.log("Deu erro: " + e))
+                })
 
-        function atribuirCampos(data)
+        function atribuirCampos(data){
 
-        {
-        const id = document.querySelector("#id");
-        const nome = document.querySelector("#nome");
-        const telefone = document.querySelector("#telefone");
+                nome.value = data.nome;
+                telefone.value = data.telefone;
+                categoria.value = data.categoria;
+                deficiencias.value = data.deficiencias;
+                email.value = data.email;
+                latitude.value = data.latitude;
+                longitude.value = data.longitude;
 
-
-        id.value = data.id;
-        nome.value = data.nome;
-        telefone.value = data.telefone;
-
+                const nome = document.querySelector("#nome");
+                const telefone = document.querySelector("#telefone");
+                const categoria = document.querySelector("#categoria");
+                const deficiencias = document.querySelector("#deficiencias");
+                const email = document.querySelector("#email ");
+                const latitude = document.querySelector("#latitude");
+                const longitude = document.querySelector("#longitude");
         }
