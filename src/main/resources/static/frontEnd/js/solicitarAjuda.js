@@ -21,9 +21,11 @@
         //fetch
         //devemos no ${} usar a crase
         fetch(`http://localhost:8080/usuarios/solicitacao/${id}`, options)
-        .then(response => {response.json()
+        .then
+        (response => {response.json()
         .then(data => atribuirCampos(data))
-        })
+        }
+        )
         .catch(e => console.log("Deu erro: " + e))
         })
 

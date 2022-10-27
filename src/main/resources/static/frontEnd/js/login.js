@@ -13,8 +13,17 @@ form.addEventListener('submit', event => {
         },
         body: JSON.stringify(data)
     }).then(res => res.json())
-        .then(data => window.location.href = "solicitarAjuda.html")//precisamos que esse caminho so retorne caso seja um
-        //usuário a ter efetuado o login.
+        .then(data => direcionarUsuario(data))//precisamos que esse caminho so retorne caso seja um
+        //usuário a ter efetuado o login. Foi solucionado criando uma função condicional para determinar a direção do login.
          .catch(error => alert("Login ou senha inválida!"));
     });
+
+    function direcionarUsuario(data){
+    console.log(data)
+    if(data.categoria == "VOLUNTARIO"){
+    window.location.href = "buscarPorUsuario.html"
+    }else{
+    window.location.href = "solicitarAjuda.html"
+    }
+ }
 

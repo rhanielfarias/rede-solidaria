@@ -1,6 +1,8 @@
         const form1 = document.getElementById("usuario")
 
         const idUser = document.querySelector("#id");
+        const id = idUser.value;
+                console.log(id);
 
         form1.addEventListener('click', (e) =>{
         const id = idUser.value;

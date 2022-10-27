@@ -4,6 +4,7 @@ html,body{
   height: 100%;
   place-items: center;
   text-align: center;
+  background: linear-gradient(72deg, #5b4009  1%, #fd7e14 99%);
 }
 .Login-Form {
     min-height: 900px;
