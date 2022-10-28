@@ -1,26 +1,41 @@
-#    Rede Solid·ria
+#    Rede Solid√°ria
 
-*PO:
-- Alexandre Vieira.
+No cotidiano de uma pessoa com defici√™ncia, quando realiza alguma tarefa na rua, ou inclusive em casa,  √†s vezes se torna necess√°rio o aux√≠lio de um indiv√≠duo. Por exemplo, caso o transito esteja
+intenso, um cego total aguarda uma pessoa vir e lhe ajudar a atravessar a rua; caso deseja fazer compras no super mercado, pede ajuda a algu√©m ou ao funcion√°rio. Tamb√©m tem aqueles que n√£o podem sair de casa e, por isso, precisam de pessoas que lhe comprem rem√©dios.
 
-*Tech Lead e Scrum Master:
-- Joyce Olympio Fonseca;
-- Crispim Luiz Martins Da Silva.
+O projeto rede solid√°ria veio para transformar esse cen√°rio e agilizar esse processo. Pois, o objetivo central do sistema, √© cadastrar volunt√°rios e usu√°rios pcds. Caso um deficiente visual deseja atravessar a rua, ou precisa de alguma ajuda, basta solicitar no rede solid√°ria que com base da localiza√ß√£o vai buscar o volunt√°rio mais pr√≥ximo.
 
-*Devs team:
-- Luiz Fernando De Moura Barbosa;
-- Paulo Renan De Sousa Ferreira;
-- Rhaniel Jesus De Souza Farias;
-- Tansen Gabriel Guimaraes Silva.
+Se precisa comprar um item na farm√°cia e n√£o pode sair do seu lar, n√£o tem problemas, basta fazer a solicita√ß√£o de um volunt√°rio na plataforma.
 
-    IntroduÁ„o:
 
-    No cotidiano de uma pessoa com deficiÍncia, quando realiza alguma tarefa na rua, ou inclusive em casa,  ‡s vezes se torna necess·rio o auxÌlio de um indivÌduo. Por exemplo, caso o transito esteja 
-intenso, 
-um cego total aguarda uma pessoa vir e lhe ajudar a atravessar a rua; caso deseja fazer compras no super mercado, pede ajuda a alguÈm ou ao funcion·rio. TambÈm tem aqueles que n„o podem sair de casa e, 
+## Estrutura do reposit√≥rio
 
-por isso, precisam de pessoas que lhe comprem remÈdios.     O projeto rede solid·ria veio para transformar esse cen·rio e agilizar esse processo. Pois, o objetivo central do sistema, È cadastrar volunt·rios 
+Esse reposit√≥rio cont√©m a seguinte estrutura:
 
-e usu·rios pcds. Caso um deficiente visual deseja atravessar a rua, ou precisa de alguma ajuda, basta solicitar no
-rede solid·ria que com base da localizaÁ„o vai buscar o volunt·rio mais prÛximo. Se 
-precisa comprar um item na farm·cia e n„o pode sair do seu lar, n„o tem problemas, basta fazer a solicitaÁ„o de um volunt·rio na plataforma.
+- [docker](src/docker) - Arquivos para inicializa√ß√£o das depend√™ncias para executar o projeto.
+- [docs](docs) - Documenta√ß√£o do projeto.
+
+## Requisitos
+- Java 11
+- Maven
+- Docker
+
+## Executando o projeto
+
+
+1. Executar a aplica√ß√£o em sua IDE de prefer√™ncia ou atrav√©s do terminal com o comando abaixo
+  - `mvn spring-boot:run`
+
+## : Estrutura do time
+
+- **PO**:
+  - Alexandre Vieira.
+- **Tech Lead e Scrum Master**:
+  - Joyce Olympio Fonseca;
+  - Crispim Luiz Martins Da Silva.
+  - Carolina De Carvalho Queiroz
+- **Dev team**:
+  - Luiz Fernando De Moura Barbosa;
+  - Paulo Renan De Sousa Ferreira;
+  - Rhaniel Jesus De Souza Farias;
+  - Tansen Gabriel Guimaraes Silva.
