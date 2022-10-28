@@ -12,5 +12,4 @@ public class UsuarioDtoSolicitacao {
     private Long id;
     private String nome;
     private String telefone;
-
 }

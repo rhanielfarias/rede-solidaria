@@ -3,6 +3,7 @@ package com.catalisa.redesolidaria.controller;
 import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
+import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
 import com.catalisa.redesolidaria.security.Criptografia;
 import com.catalisa.redesolidaria.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,11 @@ public class UsuarioController {
     @GetMapping(path = "/categoria/usuario/{id}")
     public ResponseEntity<UsuarioModel> buscaPorUsuarioPcd(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarUsuarioPcd(id));
+    }
+
+    @GetMapping(path = "/voluntario")
+    public ResponseEntity<List<VoluntarioDtoId>> buscaPorVoluntariosId(Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarVoluntarioId(id));
     }
 
     @PostMapping(path = "/login")
