@@ -30,6 +30,11 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarID(id));
     }
 
+    @PostMapping(path = "/login")
+    public ResponseEntity<UsuarioModel> loginUsuario(@RequestBody UsuarioModel usuarioModel) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.loginUser(usuarioModel.getLogin(), Criptografia.md5(usuarioModel.getSenha())));
+    }
+
     @CrossOrigin(origins = "http://127.0.0.1:5501")
     @PostMapping(path = "/create")
     public ResponseEntity<UsuarioDtoResponse> cadastrarUsuario(@RequestBody @Valid UsuarioModel usuarioModel) throws Exception {
