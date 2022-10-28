@@ -17,7 +17,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <!--<link rel="stylesheet" href="/static/css/styles.css">-->
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap"
           rel="stylesheet">
     <title>Cadastro de Usuário</title>
@@ -91,10 +90,16 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Deficiência</label>
-            <input type="text" name="deficiencias" class="form-control" id="deficiencias"
-                   placeholder="Caso seja voluntário deixar em branco">
-        </div>
+        <label class="form-label">Deficiência</label>
+        <select type="text" name="deficiencias" class="form-control" id="deficiencias" required>
+            <option selected>NENHUMA</option>
+            <option value="AUDITIVA">AUDITIVA</option>
+            <option value="INTELECTUAL">INTELECTUAL</option>
+            <option value="MOTORA">MOTORA</option>
+            <option value="PARALISIA_CEREBRAL">PARALISIA CEREBRAL</option>
+            <option value="OUTROS">OUTROS</option>
+        </select>
+    </div>
 
         <h8><i class="fa fa-plus" aria-hidden="true"></i> Você pode encontrar essas informações através do seguinte link: <a
                     href="https://www.google.com.br/maps" class="text-decoration-none"> Google Maps</a></h8>
@@ -111,7 +116,7 @@
                    required>
         </div>
 
-        <button type="submit" onclick="msg()" class="btn btn-lg btn-warning m-2 d-grid gap-2 col-2 mx-auto">Enviar
+        <button type="submit" class="btn btn-lg btn-warning m-2 d-grid gap-2 col-2 mx-auto">Enviar
         </button>
     </form>
 </div>

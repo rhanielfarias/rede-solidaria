@@ -14,7 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class TipoDaDeficienciaServiceTest {
+class TiposDeDeficienciasServiceTest {
     @Mock
     TipoDaDeficienciaService tipoDaDeficienciaService;
 

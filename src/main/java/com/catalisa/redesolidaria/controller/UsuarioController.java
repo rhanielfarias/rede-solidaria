@@ -58,6 +58,11 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscaVoluntarios(usuario));
     }
 
+    @GetMapping(path = "/categoria/usuario/{id}")
+    public ResponseEntity<UsuarioModel> buscaPorUsuarioPcd(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarUsuarioPcd(id));
+    }
+
     @PostMapping(path = "/login")
     public ResponseEntity<UsuarioModel> loginUsuario(@RequestBody UsuarioModel usuarioModel) throws Exception {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.loginUser(usuarioModel.getLogin(), Criptografia.md5(usuarioModel.getSenha())));

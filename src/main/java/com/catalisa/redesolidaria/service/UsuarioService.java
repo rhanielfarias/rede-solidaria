@@ -7,16 +7,14 @@ import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import com.catalisa.redesolidaria.security.Criptografia;
-import com.catalisa.redesolidaria.security.SecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -123,6 +121,18 @@ public class UsuarioService {
     public UsuarioModel loginUser(String login, String senha) throws ServiceExc {
         UsuarioModel userLogin =usuarioRepository.buscarLogin(login, senha);
         return userLogin;
+    }
+
+    public UsuarioModel buscarUsuarioPcd(Long id){
+        List<UsuarioModel> listaDeusuarios = usuarioRepository.findByCategoria(Categorias.USUARIO);
+        for (UsuarioModel u: listaDeusuarios) {
+            if(Objects.equals(u.getId(), id)){
+                return u;
+            }else {
+                throw new RuntimeException("Nenhum usuário encontrado");
+            }
+        }
+        throw new RuntimeException("Nenhum usuário encontrado");
     }
 
 }

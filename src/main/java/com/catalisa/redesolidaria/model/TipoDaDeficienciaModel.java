@@ -24,9 +24,4 @@ public class TipoDaDeficienciaModel implements Serializable {
     @Column
     private String tipoDaDeficiencia;
 
-
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private UsuarioModel usuarioModel;
-
 }
