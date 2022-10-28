@@ -64,4 +64,7 @@ public class UsuarioModel implements Serializable {
     @Column
     private TiposDeDeficiencias deficiencias;
 
+    @Column
+    private Long idVoluntario;
+
 }

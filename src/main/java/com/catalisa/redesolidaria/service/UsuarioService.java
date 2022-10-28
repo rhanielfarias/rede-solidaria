@@ -5,6 +5,7 @@ import com.catalisa.redesolidaria.exceptions.ServiceExc;
 import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
+import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
 import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import com.catalisa.redesolidaria.security.Criptografia;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ import java.util.stream.Collectors;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+private  UsuarioModel usuarioModel;
+
+    public List<VoluntarioDtoId>     buscarVoluntarioId(Long id) {
+        List<UsuarioModel> buscarUsuario = usuarioRepository.findAll();
+        return buscarUsuario.stream().map(usuario -> new VoluntarioDtoId(usuario.getId(), usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(), usuario.getLongitude(), usuario.getIdVoluntario())).collect(Collectors.toList());
+    }
 
 
     public List<UsuarioDtoResponse> buscar() {
@@ -102,6 +109,7 @@ public class UsuarioService {
                 voluntarioMaisProximo = voluntario;
                 UsuarioDtoSolicitacao voluntarioSelecionado = new UsuarioDtoSolicitacao(voluntario.getId(), voluntario.getNome(),
                         voluntario.getTelefone());
+                usuarioModel.setIdVoluntario(voluntarioSelecionado.getId());
                 return voluntarioSelecionado;
             }
         }
