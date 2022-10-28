@@ -24,13 +24,7 @@
 
         function atribuirCampos(data){
 
-                nome.value = data.nome;
-                telefone.value = data.telefone;
-                categoria.value = data.categoria;
-                deficiencias.value = data.deficiencias;
-                email.value = data.email;
-                latitude.value = data.latitude;
-                longitude.value = data.longitude;
+
 
                 const nome = document.querySelector("#nome");
                 const telefone = document.querySelector("#telefone");
@@ -39,4 +33,12 @@
                 const email = document.querySelector("#email ");
                 const latitude = document.querySelector("#latitude");
                 const longitude = document.querySelector("#longitude");
+
+                nome.value = data.nome;
+                telefone.value = data.telefone;
+                categoria.value = data.categoria;
+                deficiencias.value = data.deficiencias;
+                email.value = data.email;
+                latitude.value = data.latitude;
+                longitude.value = data.longitude;
         }

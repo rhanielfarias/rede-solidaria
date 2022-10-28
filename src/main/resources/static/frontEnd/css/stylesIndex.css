@@ -3,7 +3,7 @@ margin: 0;
 padding: 0;
 height:100vh;
 width:100vw;
-background: linear-gradient(72deg, #5b4009  1%, #fd7e14 99%);
+background: #fff
 
 }
 
@@ -21,7 +21,7 @@ background: linear-gradient(72deg, #5b4009  1%, #fd7e14 99%);
 
 .navigation{
     position:absolute;
-    bottom:30px;
+    bottom:78px;
     left:50%;
     display: flex;
     transform: translate(-50%);

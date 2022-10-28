@@ -25,8 +25,7 @@
     <title>Login</title>
 </head>
 <body>
-<nav  class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(72deg, #5b4009  1%, #fd7e14 99%);">
-    <p class="text-decoration-underline">REDE SOLIDÁRIA</p>
+<nav  class="navbar navbar-expand-lg navbar-dark" style="background-color: #A0522D;">
     <a class="navbar-brand" href="login.html">
         <img href="login.html" class="imgNav" src="/frontEnd/img/log.png" width="100px"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbMobile"
@@ -36,37 +35,37 @@
 
     <div class="navbar-collapse collapse justify-content-end" id="navbMobile">
         <a href="index.html" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/index.html" id="hoverBtn"><i
-                class="fas fa-home"></i> Home</a>
+                class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
     </div>
 </nav>
 
 
 
 
-    <div class="Login-Form">
-        <div class="container">
-            <div class="main-div">
+<div class="Login-Form">
+    <div class="container">
+        <div class="main-div">
 
-                <form id="usuario-login">
-                    <div class="form-group">
-                        <input type="text" name = "login" class="form-control" id="login" placeholder="login" required>
-                    </div>
+            <form id="usuario-login">
+                <div class="form-group">
+                    <input type="text" name = "login" class="form-control" id="login" placeholder="login" required>
+                </div>
 
-                    <div class="form-group">
-                        <input type="password" name = "senha" class="form-control" id="senha" placeholder="insira sua senha" required>
-                    </div>
+                <div class="form-group">
+                    <input type="password" name = "senha" class="form-control" id="senha" placeholder="insira sua senha" required>
+                </div>
 
-                    <div class="cadastro">
-                        <a href="cadastrarUsuario.html">Não tem cadastro? clique aqui.</a>
-                    </div>
+                <div class="cadastro">
+                    <a href="cadastrarUsuario.html">Não tem cadastro? clique aqui.</a>
+                </div>
 
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
 
-            </div>
         </div>
     </div>
+</div>
 
-    <script src="/frontEnd/js/login.js" ></script>
+<script src="/frontEnd/js/login.js" ></script>
 </body>
 </html>

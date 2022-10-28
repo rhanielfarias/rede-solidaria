@@ -7,16 +7,13 @@ import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import com.catalisa.redesolidaria.security.Criptografia;
-import com.catalisa.redesolidaria.security.SecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,8 +32,9 @@ public class UsuarioService {
     public UsuarioDtoResponse buscarID(Long id) {
         UsuarioModel usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("id não encontrado" + id));
-      return   new UsuarioDtoResponse(usuario.getId(),
-                usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
+        return new UsuarioDtoResponse(usuario.getId(),
+                usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(),
+                usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
                 usuario.getLongitude());
     }
 
@@ -110,18 +108,18 @@ public class UsuarioService {
         throw new RuntimeException("Nenhum voluntário encontrado!");
     }
 
-    public List<UsuarioDtoSolicitacao> buscaVoluntarios(UsuarioModel usuarioModel){
-       List<UsuarioModel> usuarios =  usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
-       List<UsuarioDtoSolicitacao> usuariosDto = new ArrayList<>();
-        for (UsuarioModel u:usuarios) {
-            UsuarioDtoSolicitacao novoUsuario = new UsuarioDtoSolicitacao(u.getId(),u.getNome(),u.getTelefone());
+    public List<UsuarioDtoSolicitacao> buscaVoluntarios(UsuarioModel usuarioModel) {
+        List<UsuarioModel> usuarios = usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
+        List<UsuarioDtoSolicitacao> usuariosDto = new ArrayList<>();
+        for (UsuarioModel u : usuarios) {
+            UsuarioDtoSolicitacao novoUsuario = new UsuarioDtoSolicitacao(u.getId(), u.getNome(), u.getTelefone());
             usuariosDto.add(novoUsuario);
         }
-       return usuariosDto;
+        return usuariosDto;
     }
 
     public UsuarioModel loginUser(String login, String senha) throws ServiceExc {
-        UsuarioModel userLogin =usuarioRepository.buscarLogin(login, senha);
+        UsuarioModel userLogin = usuarioRepository.buscarLogin(login, senha);
         return userLogin;
     }
 
