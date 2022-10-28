@@ -24,7 +24,7 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 private  UsuarioModel usuarioModel;
 
-    public List<VoluntarioDtoId>     buscarVoluntarioId(Long id) {
+    public List<VoluntarioDtoId>buscarVoluntarioId(Long id) {
         List<UsuarioModel> buscarUsuario = usuarioRepository.findAll();
         return buscarUsuario.stream().map(usuario -> new VoluntarioDtoId(usuario.getId(), usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(), usuario.getLongitude(), usuario.getIdVoluntario())).collect(Collectors.toList());
     }
@@ -109,7 +109,7 @@ private  UsuarioModel usuarioModel;
                 voluntarioMaisProximo = voluntario;
                 UsuarioDtoSolicitacao voluntarioSelecionado = new UsuarioDtoSolicitacao(voluntario.getId(), voluntario.getNome(),
                         voluntario.getTelefone());
-                usuarioModel.setIdVoluntario(voluntarioSelecionado.getId());
+//                usuarioModel.setIdVoluntario(voluntarioSelecionado.getId());
                 return voluntarioSelecionado;
             }
         }
@@ -129,18 +129,6 @@ private  UsuarioModel usuarioModel;
     public UsuarioModel loginUser(String login, String senha) throws ServiceExc {
         UsuarioModel userLogin =usuarioRepository.buscarLogin(login, senha);
         return userLogin;
-    }
-
-    public UsuarioModel buscarUsuarioPcd(Long id){
-        List<UsuarioModel> listaDeusuarios = usuarioRepository.findByCategoria(Categorias.USUARIO);
-        for (UsuarioModel u: listaDeusuarios) {
-            if(Objects.equals(u.getId(), id)){
-                return u;
-            }else {
-                throw new RuntimeException("Nenhum usuário encontrado");
-            }
-        }
-        throw new RuntimeException("Nenhum usuário encontrado");
     }
 
 }

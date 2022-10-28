@@ -59,10 +59,6 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscaVoluntarios(usuario));
     }
 
-    @GetMapping(path = "/categoria/usuario/{id}")
-    public ResponseEntity<UsuarioModel> buscaPorUsuarioPcd(@PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarUsuarioPcd(id));
-    }
 
     @GetMapping(path = "/voluntario")
     public ResponseEntity<List<VoluntarioDtoId>> buscaPorVoluntariosId(Long id){
