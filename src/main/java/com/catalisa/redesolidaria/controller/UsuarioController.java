@@ -54,12 +54,6 @@ public class UsuarioController {
         return "Usuário deletado com sucesso!";
     }
 
-    @GetMapping(path = "/categoria/voluntario")
-    public ResponseEntity<List<UsuarioDtoSolicitacao>> buscaPorVoluntarios(UsuarioModel usuario){
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscaVoluntarios(usuario));
-    }
-
-
     @GetMapping(path = "/voluntario")
     public ResponseEntity<List<VoluntarioDtoId>> buscaPorVoluntariosId(Long id){
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarVoluntarioId(id));

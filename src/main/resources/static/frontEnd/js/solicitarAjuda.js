@@ -1,3 +1,9 @@
+const solicitante = localStorage.getItem("nomeUsuario");
+console.log(solicitante);
+const nomesolictante = document.querySelector("#nome_soli");
+nomesolictante.value = solicitante;
+
+
 const form1 = document.getElementById("solicitar")
 
     form1.addEventListener('click', (e) =>{

@@ -13,22 +13,20 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     private UsuarioModel usuarioModel;
 
     public List<VoluntarioDtoId> buscarVoluntarioId(Long id) {
         List<UsuarioModel> buscarUsuario = usuarioRepository.findAll();
         return buscarUsuario.stream().map(usuario -> new VoluntarioDtoId(usuario.getId(), usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(), usuario.getLongitude(), usuario.getIdVoluntario())).collect(Collectors.toList());
     }
-
 
     public List<UsuarioDtoResponse> buscar() {
         List<UsuarioModel> buscarUsuario = usuarioRepository.findAll();
@@ -51,12 +49,10 @@ public class UsuarioService {
         return data.isBefore(now);
     }
 
-
     public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) throws Exception {
 
         Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
         usuarioModel.setSenha(Criptografia.md5(usuarioModel.getSenha()));
-        //usuarioModel.setSenha(SecurityConfiguration.passwordEncoder().encode(usuarioModel.getSenha()));
         if (validandoIdade) {
             usuarioRepository.save(usuarioModel);
             UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
@@ -91,7 +87,6 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 
-
     public UsuarioDtoSolicitacao solicitarAjuda(Long id) {
 
         double menorDistancia = Double.MAX_VALUE;
@@ -99,7 +94,6 @@ public class UsuarioService {
 
         UsuarioModel usuarioSolicitante = usuarioRepository.findById(id).get();
         List<UsuarioModel> usuarioVoluntarios = usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
-
 
         for (UsuarioModel voluntario : usuarioVoluntarios) {
             double distancia = CaculadoresDeDistancia.calculaDistancia(usuarioSolicitante.getLatitude(),
@@ -118,23 +112,10 @@ public class UsuarioService {
         return new UsuarioDtoSolicitacao(voluntarioMaisProximo.getId(),
                 voluntarioMaisProximo.getNome(),
                 voluntarioMaisProximo.getTelefone());
-
-    }
-
-    public List<UsuarioDtoSolicitacao> buscaVoluntarios(UsuarioModel usuarioModel) {
-
-        List<UsuarioModel> usuarios = usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
-        List<UsuarioDtoSolicitacao> usuariosDto = new ArrayList<>();
-        for (UsuarioModel u : usuarios) {
-            UsuarioDtoSolicitacao novoUsuario = new UsuarioDtoSolicitacao(u.getId(), u.getNome(), u.getTelefone());
-            usuariosDto.add(novoUsuario);
-        }
-        return usuariosDto;
     }
 
     public UsuarioModel loginUser(String login, String senha) throws ServiceExc {
-        UsuarioModel userLogin = usuarioRepository.buscarLogin(login, senha);
-        return userLogin;
+        return usuarioRepository.buscarLogin(login, senha);
     }
 
 }
