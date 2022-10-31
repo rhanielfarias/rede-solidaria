@@ -1,38 +1,31 @@
-    const form1 = document.getElementById("solicitar")
+const form1 = document.getElementById("solicitar")
 
+    form1.addEventListener('click', (e) =>{
+    const id = localStorage.getItem("id");
+    console.log(id);
 
-        form1.addEventListener('click', (e) =>{
-        const id = localStorage.getItem("id");
-        console.log(id);
+    const options = {
+    method: 'GET',
+    cache: 'default'
+   }
 
+    fetch(`http://localhost:8080/usuarios/solicitacao/${id}`, options)
+    .then
+    (response => {response.json()
+    .then(data => atribuirCampos(data))
+    })
+    .catch(e => console.log("Deu erro: " + e))
+    })
 
-       const options = {
-        method: 'GET',
-        cache: 'default'
-       }
+function atribuirCampos(data)
 
-        fetch(`http://localhost:8080/usuarios/solicitacao/${id}`, options)
-        .then
-        (response => {response.json()
-        .then(data => atribuirCampos(data))
-        }
-        )
-        .catch(e => console.log("Deu erro: " + e))
-        })
+{
+    const nome = document.querySelector("#nome");
+    const telefone = document.querySelector("#telefone");
 
-        function atribuirCampos(data)
-        
-        {
+    nome.value = data.nome;
+    telefone.value = data.telefone;
+}
 
-
-        const nome = document.querySelector("#nome");
-        const telefone = document.querySelector("#telefone");
-
-
-        nome.value = data.nome;
-        telefone.value = data.telefone;
-    
-        }
-        
 
        
