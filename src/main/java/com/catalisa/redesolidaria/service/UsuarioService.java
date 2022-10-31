@@ -22,9 +22,9 @@ import java.util.stream.Collectors;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
-private  UsuarioModel usuarioModel;
+    private UsuarioModel usuarioModel;
 
-    public List<VoluntarioDtoId>buscarVoluntarioId(Long id) {
+    public List<VoluntarioDtoId> buscarVoluntarioId(Long id) {
         List<UsuarioModel> buscarUsuario = usuarioRepository.findAll();
         return buscarUsuario.stream().map(usuario -> new VoluntarioDtoId(usuario.getId(), usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(), usuario.getLongitude(), usuario.getIdVoluntario())).collect(Collectors.toList());
     }
@@ -40,7 +40,7 @@ private  UsuarioModel usuarioModel;
     public UsuarioDtoResponse buscarID(Long id) {
         UsuarioModel usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("id não encontrado" + id));
-      return   new UsuarioDtoResponse(usuario.getId(),
+        return new UsuarioDtoResponse(usuario.getId(),
                 usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
                 usuario.getLongitude());
     }
@@ -95,10 +95,11 @@ private  UsuarioModel usuarioModel;
     public UsuarioDtoSolicitacao solicitarAjuda(Long id) {
 
         double menorDistancia = Double.MAX_VALUE;
-        UsuarioModel voluntarioMaisProximo;
+        UsuarioModel voluntarioMaisProximo = null;
 
         UsuarioModel usuarioSolicitante = usuarioRepository.findById(id).get();
         List<UsuarioModel> usuarioVoluntarios = usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
+
 
         for (UsuarioModel voluntario : usuarioVoluntarios) {
             double distancia = CaculadoresDeDistancia.calculaDistancia(usuarioSolicitante.getLatitude(),
@@ -107,27 +108,32 @@ private  UsuarioModel usuarioModel;
             if (distancia < menorDistancia) {
                 menorDistancia = distancia;
                 voluntarioMaisProximo = voluntario;
-                UsuarioDtoSolicitacao voluntarioSelecionado = new UsuarioDtoSolicitacao(voluntario.getId(), voluntario.getNome(),
-                        voluntario.getTelefone());
-//                usuarioModel.setIdVoluntario(voluntarioSelecionado.getId());
-                return voluntarioSelecionado;
             }
         }
-        throw new RuntimeException("Nenhum voluntário encontrado!");
+
+        if (voluntarioMaisProximo == null) {
+            throw new RuntimeException("Nenhum voluntário encontrado!");
+        }
+
+        return new UsuarioDtoSolicitacao(voluntarioMaisProximo.getId(),
+                voluntarioMaisProximo.getNome(),
+                voluntarioMaisProximo.getTelefone());
+
     }
 
-    public List<UsuarioDtoSolicitacao> buscaVoluntarios(UsuarioModel usuarioModel){
-       List<UsuarioModel> usuarios =  usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
-       List<UsuarioDtoSolicitacao> usuariosDto = new ArrayList<>();
-        for (UsuarioModel u:usuarios) {
-            UsuarioDtoSolicitacao novoUsuario = new UsuarioDtoSolicitacao(u.getId(),u.getNome(),u.getTelefone());
+    public List<UsuarioDtoSolicitacao> buscaVoluntarios(UsuarioModel usuarioModel) {
+
+        List<UsuarioModel> usuarios = usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
+        List<UsuarioDtoSolicitacao> usuariosDto = new ArrayList<>();
+        for (UsuarioModel u : usuarios) {
+            UsuarioDtoSolicitacao novoUsuario = new UsuarioDtoSolicitacao(u.getId(), u.getNome(), u.getTelefone());
             usuariosDto.add(novoUsuario);
         }
-       return usuariosDto;
+        return usuariosDto;
     }
 
     public UsuarioModel loginUser(String login, String senha) throws ServiceExc {
-        UsuarioModel userLogin =usuarioRepository.buscarLogin(login, senha);
+        UsuarioModel userLogin = usuarioRepository.buscarLogin(login, senha);
         return userLogin;
     }
 

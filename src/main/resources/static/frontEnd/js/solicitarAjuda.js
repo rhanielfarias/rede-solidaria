@@ -26,12 +26,12 @@
         function atribuirCampos(data)
         
         {
-        const id = document.querySelector("#id");
+
         const nome = document.querySelector("#nome");
         const telefone = document.querySelector("#telefone");
         
   
-        id.value = data.id;
+
         nome.value = data.nome;
         telefone.value = data.telefone;
     
