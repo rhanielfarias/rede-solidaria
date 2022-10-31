@@ -21,6 +21,8 @@ form.addEventListener('submit', event => {
 
     function direcionarUsuario(data){
 
+        localStorage.setItem("id",data.id)
+
         if(data.categoria == "VOLUNTARIO"){
         window.location.href = "buscarPorUsuario.html"
         }else if(data.categoria == "USUARIO") {

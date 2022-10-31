@@ -1,11 +1,8 @@
     const form1 = document.getElementById("solicitar")
 
-    const idUser = document.querySelector("#id");
-    const id = idUser.value;
-        console.log(id);
 
         form1.addEventListener('click', (e) =>{
-        const id = idUser.value;
+        const id = localStorage.getItem("id");
         console.log(id);
 
 
@@ -27,10 +24,10 @@
         
         {
 
+
         const nome = document.querySelector("#nome");
         const telefone = document.querySelector("#telefone");
-        
-  
+
 
         nome.value = data.nome;
         telefone.value = data.telefone;
