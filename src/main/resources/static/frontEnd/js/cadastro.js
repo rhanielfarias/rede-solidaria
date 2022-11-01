@@ -1,3 +1,25 @@
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+};
+
+function showPosition(position) {
+   const latitude = position.coords.latitude;
+   const longitude = position.coords.longitude;
+   const idlatitude = document.getElementById("latitude");
+   const idlongitude = document.getElementById("longitude");
+   idlatitude.value = latitude;
+   idlongitude.value = longitude;
+};
+
+getLocation();
+
+
+
+
 const form = document.getElementById("usuario-form")
 
 form.addEventListener('submit', event => {

@@ -23,5 +23,4 @@ public class UsuarioDtoResponse implements Serializable {
     private double latitude;
     private double longitude;
 
-
 }

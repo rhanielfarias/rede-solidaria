@@ -117,8 +117,12 @@ public class UsuarioService {
 
     public UsuarioDtoLogin loginUser(UsuarioModel usuarioModel) throws ServiceExc, NoSuchAlgorithmException {
 
-     UsuarioModel usuario = usuarioRepository.buscarLogin(usuarioModel.getLogin(), Criptografia.md5(usuarioModel.getSenha()));
+     UsuarioModel usuario = usuarioRepository.buscarLogin(usuarioModel.getLogin(),
+             Criptografia.md5(usuarioModel.getSenha()));
 
+        if(usuario == null){
+            return null;
+        }
         return new UsuarioDtoLogin(usuario.getId(), usuario.getCategoria(), usuario.getNome());
     }
 
