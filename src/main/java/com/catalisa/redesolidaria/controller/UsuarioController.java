@@ -4,7 +4,7 @@ import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
-import com.catalisa.redesolidaria.security.Criptografia;
+
 import com.catalisa.redesolidaria.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,8 +59,8 @@ public class UsuarioController {
     }
 
     @PostMapping(path = "/login")
-    public ResponseEntity<UsuarioModel> loginUsuario(@RequestBody UsuarioModel usuarioModel) throws Exception {
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.loginUser(usuarioModel.getLogin(), Criptografia.md5(usuarioModel.getSenha())));
+    public ResponseEntity<UsuarioDtoResponse> loginUsuario(@RequestBody UsuarioModel usuarioModel) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.loginUser(usuarioModel));
     }
 
 }

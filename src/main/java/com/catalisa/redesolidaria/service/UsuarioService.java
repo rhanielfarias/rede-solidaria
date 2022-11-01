@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -104,6 +105,8 @@ public class UsuarioService {
 
         if (voluntarioMaisProximo == null) {
             throw new RuntimeException("Nenhum voluntário encontrado!");
+        }else if (menorDistancia > 4000) {
+            throw new RuntimeException("Nenhum voluntário encontrado!");
         }
 
         return new UsuarioDtoSolicitacao(voluntarioMaisProximo.getId(),
@@ -111,8 +114,14 @@ public class UsuarioService {
                 voluntarioMaisProximo.getTelefone());
     }
 
-    public UsuarioModel loginUser(String login, String senha) throws ServiceExc {
-        return usuarioRepository.buscarLogin(login, senha);
+    public UsuarioDtoResponse loginUser(UsuarioModel usuarioModel) throws ServiceExc, NoSuchAlgorithmException {
+
+     UsuarioModel usuario = usuarioRepository.buscarLogin(usuarioModel.getLogin(), Criptografia.md5(usuarioModel.getSenha()));
+
+        return new UsuarioDtoResponse(usuario.getId()
+                , usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(),
+                usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
+                usuario.getLongitude());
     }
 
 }
