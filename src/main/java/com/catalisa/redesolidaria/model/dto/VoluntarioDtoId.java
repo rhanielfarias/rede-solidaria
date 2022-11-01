@@ -2,13 +2,11 @@ package com.catalisa.redesolidaria.model.dto;
 
 import com.catalisa.redesolidaria.Enums.Categorias;
 import com.catalisa.redesolidaria.Enums.TiposDeDeficiencias;
-import com.catalisa.redesolidaria.model.TipoDaDeficienciaModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @AllArgsConstructor

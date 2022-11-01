@@ -20,7 +20,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-
     @GetMapping
     public ResponseEntity<List<UsuarioDtoResponse>> buscarUsuarios() {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscar());

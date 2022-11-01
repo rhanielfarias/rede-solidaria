@@ -51,16 +51,15 @@ public class UsuarioService {
 
     public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) throws Exception {
 
-        Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
+        boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
         usuarioModel.setSenha(Criptografia.md5(usuarioModel.getSenha()));
         if (validandoIdade) {
             usuarioRepository.save(usuarioModel);
-            UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
+
+            return new UsuarioDtoResponse(usuarioModel.getId()
                     , usuarioModel.getCategoria(), usuarioModel.getDeficiencias(), usuarioModel.getNome(),
                     usuarioModel.getTelefone(), usuarioModel.getEmail(), usuarioModel.getLatitude(),
                     usuarioModel.getLongitude());
-
-            return usuarioDtoResponse;
         } else {
             return null;
         }
@@ -75,12 +74,10 @@ public class UsuarioService {
 
         usuarioRepository.save(atualizar);
 
-        UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(atualizar.getId()
+        return new UsuarioDtoResponse(atualizar.getId()
                 , atualizar.getCategoria(), atualizar.getDeficiencias(), atualizar.getNome(), atualizar.getTelefone(),
                 atualizar.getEmail(), atualizar.getLatitude(),
                 atualizar.getLongitude());
-
-        return usuarioDtoResponse;
     }
 
     public void deletar(Long id) {
