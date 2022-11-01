@@ -38,7 +38,7 @@
 <div class="container" style="margin-top: 50px;">
     <h4><i class="fa fa-plus" aria-hidden="true"></i> INFORME SEUS DADOS</h4>
     <hr>
-    <form id="usuario-form">
+    <form id="usuario-form" autocomplete="off">
         <div class="mb-3">
             <label class="form-label">Nome</label>
             <input type="text" name="nome" class="form-control" id="nome" placeholder="Ex: José da Silva" required>
@@ -46,13 +46,12 @@
 
         <div class="mb-3">
             <label class="form-label">CPF</label>
-            <input type="text" name="cpf" class="form-control" id="cpf" placeholder="Ex: 123.123.123-22" required>
+            <input type="text" name="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" class="form-control" id="cpf" placeholder="Ex: 123.123.123-22" required>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Data de nascimento</label>
-            <input type="date" name="dataDeNascimento" class="form-control" id="dataDeNascimento"
-                   placeholder="Ex: 2000-09-18">
+            <input type="date" name="dataDeNascimento" class="form-control" id="dataDeNascimento">
         </div>
 
         <div>
@@ -82,7 +81,7 @@
 
         <div class="mb-3">
             <label class="form-label">Senha</label>
-            <input type="text" name="senha" class="form-control" id="senha" required>
+            <input type="password" name="senha" class="form-control" id="senha" required>
         </div>
 
         <div class="mb-3">

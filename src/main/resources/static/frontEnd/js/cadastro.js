@@ -13,13 +13,16 @@ form.addEventListener('submit', event => {
         },
         body: JSON.stringify(data)
     }).then(res => res.json())
-        .then(data => console.log(data))
-        .then(data => window.location.href="login.html")
+        .then(data => refresh())
         .catch(error => console.log(error));
 });
 
-//    function msg() {
-//        alert("Salvo com sucesso!");
-//        window.location.reload(true)
-//        window.location.href="login.html";
-//      };
+ function refresh()
+ {
+     alert("Usuário cadastrado com sucesso!");
+     window.location.href="login.html";
+ }
+
+
+
+
