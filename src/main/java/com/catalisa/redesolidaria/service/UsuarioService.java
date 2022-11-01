@@ -3,6 +3,7 @@ package com.catalisa.redesolidaria.service;
 import com.catalisa.redesolidaria.Enums.Categorias;
 import com.catalisa.redesolidaria.exceptions.ServiceExc;
 import com.catalisa.redesolidaria.model.UsuarioModel;
+import com.catalisa.redesolidaria.model.dto.UsuarioDtoLogin;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
@@ -114,14 +115,11 @@ public class UsuarioService {
                 voluntarioMaisProximo.getTelefone());
     }
 
-    public UsuarioDtoResponse loginUser(UsuarioModel usuarioModel) throws ServiceExc, NoSuchAlgorithmException {
+    public UsuarioDtoLogin loginUser(UsuarioModel usuarioModel) throws ServiceExc, NoSuchAlgorithmException {
 
      UsuarioModel usuario = usuarioRepository.buscarLogin(usuarioModel.getLogin(), Criptografia.md5(usuarioModel.getSenha()));
 
-        return new UsuarioDtoResponse(usuario.getId()
-                , usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(),
-                usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
-                usuario.getLongitude());
+        return new UsuarioDtoLogin(usuario.getId(), usuario.getCategoria(), usuario.getNome());
     }
 
 }
