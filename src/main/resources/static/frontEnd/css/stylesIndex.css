@@ -16,11 +16,14 @@ junstify-content:left;
     border-radius: 18px;
     overflow: hidden;
     position: absolute;
-    top: 32%;
+    top: 25%;
     left:2%;
     align-items: left;
     junstify-content:left;
 
+}
+.rodape{
+margin-top:42%;
 }
 
 input{
