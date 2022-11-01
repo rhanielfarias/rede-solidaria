@@ -14,19 +14,23 @@ form.addEventListener('submit', event => {
         body: JSON.stringify(data)
     }).then(res => res.json())
         .then(data => direcionarUsuario(data))
-        .then(console.log(data))
-         .catch(error => console.log(categoria));
+        .catch(error => refresh());
     });
 
-    function direcionarUsuario(data){
+function direcionarUsuario(data){
 
-        localStorage.setItem("id",data.id)
-        localStorage.setItem("nomeUsuario",data.nome)
+    localStorage.setItem("id",data.id)
+    localStorage.setItem("nomeUsuario",data.nome)
 
-        if(data.categoria == "VOLUNTARIO"){
-        window.location.href = "buscarPorUsuario.html"
-        }else if(data.categoria == "USUARIO") {
-        window.location.href = "solicitarAjuda.html"
-        }
-    //categoria.value = data.categoria; desnecessário pois não está sendo usado
+    if(data.categoria == "VOLUNTARIO"){
+    window.location.href = "buscarPorUsuario.html"
+    }else if(data.categoria == "USUARIO") {
+    window.location.href = "solicitarAjuda.html"
+    }
+ };
+
+ function refresh()
+ {
+     alert("Usuário ou senha inválidos!");
+     location.reload();
  }
