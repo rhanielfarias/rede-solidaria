@@ -1,0 +1,976 @@
+{
+	"info": {
+		"_postman_id": "fe65cf12-8f9d-40bc-9a4d-f0046fa427d1",
+		"name": "Projeto Final Catalisa - Squade 3",
+		"description": "StartFragment\n\n# Rede Solidária\n\n\\*PO:\n\n- Alexandre Vieira.\n    \n\n\\*Tech Lead e Scrum Master:\n\n- Joyce Olympio Fonseca;\n- Crispim Luiz Martins Da Silva.\n    \n\n\\*Devs team:\n\n- Luiz Fernando De Moura Barbosa;\n- Paulo Renan De Sousa Ferreira;\n- Rhaniel Jesus De Souza Farias;\n- Tansen Gabriel Guimaraes Silva.\n    Introdução:\n    No cotidiano de uma pessoa com deficiência, quando realiza alguma tarefa na rua, ou inclusive em casa, às vezes se torna necessário o auxílio de um indivíduo. Por exemplo, caso o transito esteja intenso, um cego total aguarda uma pessoa vir e lhe ajudar a atravessar a rua; caso deseja fazer compras no super mercado, pede ajuda a alguém ou ao funcionário. Também tem aqueles que não podem sair de casa e,\n    \n\npor isso, precisam de pessoas que lhe comprem remédios. O projeto rede solidária veio para transformar esse cenário e agilizar esse processo. Pois, o objetivo central do sistema, é cadastrar voluntários\n\ne usuários pcds. Caso um deficiente visual deseja atravessar a rua, ou precisa de alguma ajuda, basta solicitar no rede solidária que com base da localização vai buscar o voluntário mais próximo. Se precisa comprar um item na farmácia e não pode sair do seu lar, não tem problemas, basta fazer a solicitação de um voluntário na plataforma.\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22744326"
+	},
+	"item": [
+		{
+			"name": "Cadastro de Usuário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Rhaniel Jesus\",\r\n    \"cpf\": \"227.568.170-15\",\r\n    \"dataDeNascimento\": \"1998-06-30\",\r\n    \"email\": \"rhaniel@gmail.com\",\r\n    \"telefone\": \"94981735069\",\r\n    \"categoria\": \"USUARIO\",\r\n    \"login\":\"rani02\",\r\n    \"senha\":\"1234\",\r\n    \"latitude\": -3.7510635,\r\n    \"longitude\": -49.6799967,\r\n    \"deficiencias\": \"VISUAL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuarios/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Cadastro de Usuário efetuado",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Rhaniel Jesus\",\r\n    \"cpf\": \"227.568.170-15\",\r\n    \"dataDeNascimento\": \"1998-06-30\",\r\n    \"email\": \"rhaniel@gmail.com\",\r\n    \"telefone\": \"94981735069\",\r\n    \"categoria\": \"USUARIO\",\r\n    \"login\":\"rani02\",\r\n    \"senha\":\"1234\",\r\n    \"latitude\": -3.7510635,\r\n    \"longitude\": -49.6799967,\r\n    \"deficiencias\": \"VISUAL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"create"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 14:51:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 7,\n    \"categoria\": \"USUARIO\",\n    \"deficiencias\": \"VISUAL\",\n    \"nome\": \"Rhaniel Jesus\",\n    \"telefone\": \"94981735069\",\n    \"email\": \"rhaniel@gmail.com\",\n    \"latitude\": -3.7510635,\n    \"longitude\": -49.6799967\n}"
+				},
+				{
+					"name": "Validação de CPF retornando retornando notificação com sucesso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Rhaniel Jesus\",\r\n    \"cpf\": \"123123123\",\r\n    \"dataDeNascimento\": \"1998-06-30\",\r\n    \"email\": \"rhaniel@gmail.com\",\r\n    \"telefone\": \"94981735069\",\r\n    \"categoria\": \"USUARIO\",\r\n    \"login\":\"tansen\",\r\n    \"senha\":\"1234\",\r\n    \"latitude\": -3.7510635,\r\n    \"longitude\": -49.6799967,\r\n    \"tipoDaDeficiencia\": [\r\n        {\r\n            \"tipoDaDeficiencia\": \"Visual\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"create"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 21 Oct 2022 16:59:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cpf\": \"número do registro de contribuinte individual brasileiro (CPF) inválido\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Cadastro de Voluntário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Luiz Fernando\",\r\n    \"cpf\":\"38479960027\",\r\n    \"dataDeNascimento\":\"1988-09-15\",\r\n    \"email\":\"luiz@gmail.com\",\r\n    \"telefone\":\"3499195402\",\r\n    \"categoria\":\"VOLUNTARIO\",\r\n    \"login\":\"luiz\",\r\n    \"senha\":\"0000\",\r\n    \"latitude\":-3.751582,\r\n    \"longitude\":-49.675960,\r\n    \"deficiencias\":\"NENHUMA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuarios/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Cadastro de Voluntário com sucesso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"Luiz Fernando\",\r\n    \"cpf\":\"38479960027\",\r\n    \"dataDeNascimento\":\"1988-09-15\",\r\n    \"email\":\"luiz@gmail.com\",\r\n    \"telefone\":\"3499195402\",\r\n    \"categoria\":\"VOLUNTARIO\",\r\n    \"login\":\"luiz\",\r\n    \"senha\":\"0000\",\r\n    \"latitude\":-3.751582,\r\n    \"longitude\":-49.675960,\r\n    \"deficiencias\":\"NENHUMA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"create"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 14:58:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 9,\n    \"categoria\": \"VOLUNTARIO\",\n    \"deficiencias\": \"NENHUMA\",\n    \"nome\": \"Luiz Fernando\",\n    \"telefone\": \"3499195402\",\n    \"email\": \"luiz@gmail.com\",\n    \"latitude\": -3.751582,\n    \"longitude\": -49.67596\n}"
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\":\"tansen\",\r\n    \"senha\":\"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuarios/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login efetuado com sucesso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\":\"tansen\",\r\n    \"senha\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 16:49:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 6,\n    \"categoria\": \"VOLUNTARIO\",\n    \"deficiencias\": \"NENHUMA\",\n    \"nome\": \"Tansen Gabriel\",\n    \"telefone\": \"(34) 99195-4002\",\n    \"email\": \"tansen@gmail.com\",\n    \"latitude\": -18.59619128279987,\n    \"longitude\": -46.51523173371939\n}"
+				}
+			]
+		},
+		{
+			"name": "Atualizar localização",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"longitude\":-29.8845857139687,\r\n    \"latitude\":-51.13208315585644\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuarios/atualizar/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"atualizar",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Atualizar localização",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"longitude\":-23.538351627984,\r\n    \"latitude\":-46.61040438819593\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/atualizar/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"atualizar",
+								"9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 15:05:52 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 9,\n    \"categoria\": \"VOLUNTARIO\",\n    \"deficiencias\": \"NENHUMA\",\n    \"nome\": \"Luiz Fernando\",\n    \"telefone\": \"3499195402\",\n    \"email\": \"luiz@gmail.com\",\n    \"latitude\": -46.61040438819593,\n    \"longitude\": -23.538351627984\n}"
+				}
+			]
+		},
+		{
+			"name": "Solicitação de Ajuda",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios/solicitacao/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"solicitacao",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Solicitação de Ajuda - Usuário mais próximo encontrado",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios/solicitacao/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"solicitacao",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 14:59:42 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"nome\": \"José Aparecido Silva\",\n    \"telefone\": \"(12) 97281-4753\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Buscar todos cadastros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Buscar todos cadastros",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 16:52:49 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"categoria\": \"USUARIO\",\n        \"deficiencias\": \"VISUAL\",\n        \"nome\": \"Maria das Dores\",\n        \"telefone\": \"(16) 98916-1814\",\n        \"email\": \"maria@gmail.com\",\n        \"latitude\": -23.539620417287537,\n        \"longitude\": -46.62468280517948\n    },\n    {\n        \"id\": 2,\n        \"categoria\": \"VOLUNTARIO\",\n        \"deficiencias\": \"NENHUMA\",\n        \"nome\": \"José Aparecido Silva\",\n        \"telefone\": \"(12) 97281-4753\",\n        \"email\": \"jose@gmail.com\",\n        \"latitude\": -23.54939880630506,\n        \"longitude\": -46.62289657197949\n    },\n    {\n        \"id\": 3,\n        \"categoria\": \"VOLUNTARIO\",\n        \"deficiencias\": \"NENHUMA\",\n        \"nome\": \"Diego Dias de Jesus\",\n        \"telefone\": \"(19) 98051-1122\",\n        \"email\": \"diego@gmail.com\",\n        \"latitude\": -23.550849127432965,\n        \"longitude\": -46.61738476667668\n    },\n    {\n        \"id\": 4,\n        \"categoria\": \"VOLUNTARIO\",\n        \"deficiencias\": \"NENHUMA\",\n        \"nome\": \"Fábio de Melo Faria\",\n        \"telefone\": \"(17) 98053-5897\",\n        \"email\": \"fabio@gmail.com\",\n        \"latitude\": -23.556509905160148,\n        \"longitude\": -46.61197503184243\n    },\n    {\n        \"id\": 5,\n        \"categoria\": \"USUARIO\",\n        \"deficiencias\": \"MOTORA\",\n        \"nome\": \"Fátima Santos Lima\",\n        \"telefone\": \"(18) 98578-9177\",\n        \"email\": \"fatima@gmail.com\",\n        \"latitude\": -23.556369558246686,\n        \"longitude\": -46.631368420870864\n    },\n    {\n        \"id\": 6,\n        \"categoria\": \"VOLUNTARIO\",\n        \"deficiencias\": \"NENHUMA\",\n        \"nome\": \"Tansen Gabriel\",\n        \"telefone\": \"(34) 99195-4002\",\n        \"email\": \"tansen@gmail.com\",\n        \"latitude\": -18.59619128279987,\n        \"longitude\": -46.51523173371939\n    },\n    {\n        \"id\": 9,\n        \"categoria\": \"VOLUNTARIO\",\n        \"deficiencias\": \"NENHUMA\",\n        \"nome\": \"Luiz Fernando\",\n        \"telefone\": \"3499195402\",\n        \"email\": \"luiz@gmail.com\",\n        \"latitude\": -46.61040438819593,\n        \"longitude\": -23.538351627984\n    },\n    {\n        \"id\": 7,\n        \"categoria\": \"USUARIO\",\n        \"deficiencias\": \"VISUAL\",\n        \"nome\": \"Rhaniel Jesus\",\n        \"telefone\": \"94981735069\",\n        \"email\": \"rhaniel@gmail.com\",\n        \"latitude\": -51.13208315585644,\n        \"longitude\": -29.8845857139687\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Buscar um cadastro específico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Buscar um cadastro específico",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 16:53:33 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"categoria\": \"VOLUNTARIO\",\n    \"deficiencias\": \"NENHUMA\",\n    \"nome\": \"Diego Dias de Jesus\",\n    \"telefone\": \"(19) 98051-1122\",\n    \"email\": \"diego@gmail.com\",\n    \"latitude\": -23.550849127432965,\n    \"longitude\": -46.61738476667668\n}"
+				}
+			]
+		},
+		{
+			"name": "Deletar um cadastro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Deletado com sucesso",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "30"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 14:57:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Usuário deletado com sucesso!"
+				},
+				{
+					"name": "Id não encontrado",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuarios/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"8"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 01 Nov 2022 22:06:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Id de usuário não existente no banco de dados."
+				}
+			]
+		}
+	]
+}
