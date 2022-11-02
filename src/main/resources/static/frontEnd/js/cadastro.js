@@ -7,12 +7,8 @@ function getLocation() {
 };
 
 function showPosition(position) {
-   const latitude = position.coords.latitude;
-   const longitude = position.coords.longitude;
-   const idlatitude = document.getElementById("latitude");
-   const idlongitude = document.getElementById("longitude");
-   idlatitude.value = latitude;
-   idlongitude.value = longitude;
+   document.getElementById("latitude").value = position.coords.latitude;
+   document.getElementById("longitude").value = position.coords.longitude;
 };
 
 getLocation();
