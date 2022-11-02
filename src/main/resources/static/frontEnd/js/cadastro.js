@@ -1,3 +1,21 @@
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+};
+
+function showPosition(position) {
+   document.getElementById("latitude").value = position.coords.latitude;
+   document.getElementById("longitude").value = position.coords.longitude;
+};
+
+getLocation();
+
+
+
+
 const form = document.getElementById("usuario-form")
 
 form.addEventListener('submit', event => {

@@ -2,6 +2,7 @@ package com.catalisa.redesolidaria.model;
 
 import com.catalisa.redesolidaria.Enums.Categorias;
 import com.catalisa.redesolidaria.Enums.TiposDeDeficiencias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -64,6 +65,7 @@ public class UsuarioModel implements Serializable {
     @Column
     private TiposDeDeficiencias deficiencias;
 
+    @JsonIgnore
     @Column
     private Long idVoluntario;
 

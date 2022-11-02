@@ -3,6 +3,7 @@ package com.catalisa.redesolidaria.service;
 import com.catalisa.redesolidaria.Enums.Categorias;
 import com.catalisa.redesolidaria.exceptions.ServiceExc;
 import com.catalisa.redesolidaria.model.UsuarioModel;
+import com.catalisa.redesolidaria.model.dto.UsuarioDtoLogin;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,17 +53,15 @@ public class UsuarioService {
 
     public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) throws Exception {
 
-
-        Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
+        boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
         usuarioModel.setSenha(Criptografia.md5(usuarioModel.getSenha()));
         if (validandoIdade) {
             usuarioRepository.save(usuarioModel);
-            UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(usuarioModel.getId()
+
+            return new UsuarioDtoResponse(usuarioModel.getId()
                     , usuarioModel.getCategoria(), usuarioModel.getDeficiencias(), usuarioModel.getNome(),
                     usuarioModel.getTelefone(), usuarioModel.getEmail(), usuarioModel.getLatitude(),
                     usuarioModel.getLongitude());
-
-            return usuarioDtoResponse;
         } else {
             return null;
         }
@@ -76,12 +76,10 @@ public class UsuarioService {
 
         usuarioRepository.save(atualizar);
 
-        UsuarioDtoResponse usuarioDtoResponse = new UsuarioDtoResponse(atualizar.getId()
+        return new UsuarioDtoResponse(atualizar.getId()
                 , atualizar.getCategoria(), atualizar.getDeficiencias(), atualizar.getNome(), atualizar.getTelefone(),
                 atualizar.getEmail(), atualizar.getLatitude(),
                 atualizar.getLongitude());
-
-        return usuarioDtoResponse;
     }
 
     public void deletar(Long id) {
@@ -108,6 +106,8 @@ public class UsuarioService {
 
         if (voluntarioMaisProximo == null) {
             throw new RuntimeException("Nenhum voluntário encontrado!");
+        }else if (menorDistancia > 4000) {
+            throw new RuntimeException("Nenhum voluntário encontrado!");
         }
 
         return new UsuarioDtoSolicitacao(voluntarioMaisProximo.getId(),
@@ -115,8 +115,15 @@ public class UsuarioService {
                 voluntarioMaisProximo.getTelefone());
     }
 
-    public UsuarioModel loginUser(String login, String senha) throws ServiceExc {
-        return usuarioRepository.buscarLogin(login, senha);
+    public UsuarioDtoLogin loginUser(UsuarioModel usuarioModel) throws ServiceExc, NoSuchAlgorithmException {
+
+     UsuarioModel usuario = usuarioRepository.buscarLogin(usuarioModel.getLogin(),
+             Criptografia.md5(usuarioModel.getSenha()));
+
+        if(usuario == null){
+            return null;
+        }
+        return new UsuarioDtoLogin(usuario.getId(), usuario.getCategoria(), usuario.getNome());
     }
 
 }
