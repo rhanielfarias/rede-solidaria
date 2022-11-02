@@ -10,12 +10,15 @@ import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
 import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import com.catalisa.redesolidaria.security.Criptografia;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,7 +26,21 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    private UsuarioModel usuarioModel;
+
+    public List<UsuarioDtoResponse> buscarVoluntarios(){
+        List<UsuarioModel> voluntarios = usuarioRepository.findByCategoria(Categorias.VOLUNTARIO);
+        List<UsuarioDtoResponse> dtoVoluntarios = new ArrayList<>();
+        UsuarioDtoResponse volunt;
+
+        for (UsuarioModel v : voluntarios) {
+            volunt = new UsuarioDtoResponse(v.getId()
+                    , v.getCategoria(), v.getDeficiencias(), v.getNome(), v.getTelefone(),
+                    v.getEmail(), v.getLatitude(),
+                    v.getLongitude());
+            dtoVoluntarios.add(volunt);
+        }
+        return dtoVoluntarios;
+    }
 
     public List<VoluntarioDtoId> buscarVoluntarioId(Long id) {
         List<UsuarioModel> buscarUsuario = usuarioRepository.findAll();
@@ -107,7 +124,7 @@ public class UsuarioService {
         if (voluntarioMaisProximo == null) {
             throw new RuntimeException("Nenhum voluntário encontrado!");
         }else if (menorDistancia > 4000) {
-            throw new RuntimeException("Nenhum voluntário encontrado!");
+            throw new NoSuchElementException("Nenhum voluntário encontrado!");
         }
 
         return new UsuarioDtoSolicitacao(voluntarioMaisProximo.getId(),

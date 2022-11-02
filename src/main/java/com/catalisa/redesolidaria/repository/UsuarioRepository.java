@@ -10,11 +10,12 @@ import java.util.List;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
-    public UsuarioModel findByIdVoluntario(Long id);
+
     public List<UsuarioModel> findByCategoria(Categorias categorias);
 
     @Query("select m from UsuarioModel m where m.login = :login and m.senha = :senha")
     public UsuarioModel buscarLogin(String login, String senha);
 
-    UsuarioModel findByLogin(String login);
+
+
 }

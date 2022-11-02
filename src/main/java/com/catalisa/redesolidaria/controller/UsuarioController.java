@@ -1,10 +1,12 @@
 package com.catalisa.redesolidaria.controller;
 
+import com.catalisa.redesolidaria.Enums.Categorias;
 import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoLogin;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
+import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import com.catalisa.redesolidaria.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,6 +22,12 @@ import java.util.List;
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
+
+    @GetMapping(path = "/voluntarios")
+    public ResponseEntity<List<UsuarioDtoResponse>> buscarVoluntarios() {
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarVoluntarios());
+
+    }
 
     @GetMapping
     public ResponseEntity<List<UsuarioDtoResponse>> buscarUsuarios() {

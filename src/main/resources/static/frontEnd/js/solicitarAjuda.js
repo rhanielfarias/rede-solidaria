@@ -19,8 +19,9 @@ const form1 = document.getElementById("solicitar")
     .then
     (response => {response.json()
     .then(data => atribuirCampos(data))
+    .then(console.log(data))
     })
-    .catch(e => console.log("Deu erro: " + e))
+    .catch(e => alert("Não encontramos nenhum voluntário próximo de sua localização!"))
     })
 
 function atribuirCampos(data)
