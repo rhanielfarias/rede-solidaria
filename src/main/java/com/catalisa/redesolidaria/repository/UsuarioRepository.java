@@ -15,4 +15,6 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
 
     @Query("select m from UsuarioModel m where m.login = :login and m.senha = :senha")
     public UsuarioModel buscarLogin(String login, String senha);
+
+    UsuarioModel findByLogin(String login);
 }

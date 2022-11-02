@@ -20,119 +20,119 @@
     <title>Solicitar Ajuda</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient( #054187 1%, #0e1a33 99%);">
-        <a class="navbar-brand" href="index.html">
-            <img href="index.html" class="imgNav" src="/frontEnd/img/log.png" width="70px"/> Rede Solidária</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbMobile"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient( #054187 1%, #0e1a33 99%);">
+    <a class="navbar-brand" href="index.html">
+        <img href="index.html" class="imgNav" src="/frontEnd/img/log.png" width="70px"/> Rede Solidária</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbMobile"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="navbar-collapse collapse justify-content-end" id="navbMobile">
+    <div class="navbar-collapse collapse justify-content-end" id="navbMobile">
 
-            <a href="buscarPorUsuario.html" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" id="hoverBtn"><i
-                    class="fas fa-search"></i> Buscar Usuário</a>
-            <a class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/index.html"
-               id="hoverBt"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
+        <a href="buscarPorUsuario.html" class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" id="hoverBtn"><i
+                class="fas fa-search"></i> Buscar Usuário</a>
+        <a class="btn-nav nav-link nav-item" style="letter-spacing: 2px;" href="/frontEnd/index.html"
+           id="hoverBt"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
+    </div>
+</nav>
+
+<div class="container" style="margin-top: 50px;">
+    <h4><i class="fa fa-plus" aria-hidden="true"></i> SOLICITAR AJUDA</h4>
+    <hr>
+
+    <form id="solicitante" autocomplete="on">
+
+        <div>
+            <label class="form-label">Solicitante</label>
+            <input type="text" class="form-control" name="nome" id="nome_soli" disabled>
         </div>
-    </nav>
-
-    <div class="container" style="margin-top: 50px;">
-        <h4><i class="fa fa-plus" aria-hidden="true"></i> SOLICITAR AJUDA</h4>
-        <hr>
-
-        <form id="solicitante" autocomplete="on">
-
-            <div>
-                <label class="form-label">Solicitante</label>
-                <input type="text" class="form-control" name="nome" id="nome_soli" disabled>
+    </form>
+    <br>
+    <section>
+        <form id="solicitarAjuda">
+            <div class="form-group">
+                <br>
+                <button type="button" id="solicitar" class="btn btn-sm col-2 btn-primary">Solicitar Ajuda</button>
+                <hr>
+                <h5>Voluntário encontrado: </h5>
+                <div>
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="nome" placeholder="nome do voluntário"
+                           disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" id="telefone"
+                           placeholder="telefone do voluntário" disabled>
+                </div>
             </div>
         </form>
-        <br>
-        <section>
-            <form id="solicitarAjuda">
-                <div class="form-group">
-                    <br>
-                    <button type="button" id="solicitar" class="btn btn-sm col-2 btn-primary">Solicitar Ajuda</button>
-                    <hr>
-                    <h5 >Voluntário encontrado: </h5>
-                    <div>
-                        <label class="form-label">Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="nome do voluntário"
-                               disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Telefone</label>
-                        <input type="text" class="form-control" name="telefone" id="telefone"
-                               placeholder="telefone do voluntário" disabled>
-                    </div>
-                </div>
-            </form>
-        </section>
+    </section>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<footer id="footer">
+
+    <div class="footer-content">
+        <ul class="footer-menu">
+            <p>Empresa</p>
+            <li class="footer-menu-item">
+                Sobre
+            </li>
+            <li class="footer-menu-item">
+                Voluntários
+            </li>
+        </ul>
+        <ul class="footer-menu">
+            <p>Comunidades</p>
+            <li class="footer-menu-item">
+                Ajude uma ONG
+            </li>
+            <li class="footer-menu-item">
+                Campanhas
+            </li>
+
+        </ul>
+        <ul class="footer-menu">
+            <p>Links úteis</p>
+            <li class="footer-menu-item">
+                Ajuda
+            </li>
+            <li class="footer-menu-item">
+                Empresas Parceiras
+            </li>
+        </ul>
+        <div class="socials">
+            <a href="https://www.instagram.com/zupinnovation/"><i class="fa fa-instagram"></i></a>
+            <a href="https://twitter.com/ZupInnovation"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.facebook.com/zupinnovation"><i class="fa fa-facebook-f"></i></a>
+        </div>
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <footer id="footer">
-
-        <div class="footer-content">
-            <ul class="footer-menu">
-                <p>Empresa</p>
-                <li class="footer-menu-item">
-                    Sobre
-                </li>
-                <li class="footer-menu-item">
-                    Voluntários
-                </li>
-            </ul>
-            <ul class="footer-menu">
-                <p>Comunidades</p>
-                <li class="footer-menu-item">
-                    Ajude uma ONG
-                </li>
-                <li class="footer-menu-item">
-                    Campanhas
-                </li>
-
-            </ul>
-            <ul class="footer-menu">
-                <p>Links úteis</p>
-                <li class="footer-menu-item">
-                    Ajuda
-                </li>
-                <li class="footer-menu-item">
-                    Empresas Parceiras
-                </li>
-            </ul>
-            <div class="socials">
-                <a href="https://www.instagram.com/zupinnovation/"><i class="fa fa-instagram"></i></a>
-                <a href="https://twitter.com/ZupInnovation"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.facebook.com/zupinnovation"><i class="fa fa-facebook-f"></i></a>
+    <div class="footer-info">
+        <ul class="footer-info-items">
+            <li class="footer-info-item">Legal</li>
+            <li class="footer-info-item">Centro de Privacidade</li>
+            <li class="footer-info-item">Política de Privacidade</li>
+            <li class="footer-info-item">Cookies</li>
+            <li class="footer-info-item">Sobre anúncios</li>
+        </ul>
+        <div class="rights">
+            <div class="country">
+                <a href="https://www.zup.com.br/"><img src="/frontEnd/img/zup2.png" width="100px"></a>
             </div>
+            <p>©Copyright 2022 Zup. Todos os direitos reservados.</p>
         </div>
-        <div class="footer-info">
-            <ul class="footer-info-items">
-                <li class="footer-info-item">Legal</li>
-                <li class="footer-info-item">Centro de Privacidade</li>
-                <li class="footer-info-item">Política de Privacidade</li>
-                <li class="footer-info-item">Cookies</li>
-                <li class="footer-info-item">Sobre anúncios</li>
-            </ul>
-            <div class="rights">
-                <div class="country">
-                    <a href="https://www.zup.com.br/"><img src="/frontEnd/img/zup2.png" width="100px"></a>
-                </div>
-                <p>©Copyright 2022 Zup. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 
 
-    <script src="/frontEnd/js/solicitarAjuda.js"></script>
+<script src="/frontEnd/js/solicitarAjuda.js"></script>
 </body>
 </html>            

@@ -13,7 +13,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter
@@ -48,6 +47,7 @@ public class UsuarioModel implements Serializable {
     @Column
     @Enumerated(EnumType.STRING)
     private Categorias categoria;
+
 
     @Column(nullable = false, unique = true)
     private String login;

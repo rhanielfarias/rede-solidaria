@@ -51,6 +51,7 @@ public class UsuarioService {
 
     public UsuarioDtoResponse cadastrar(UsuarioModel usuarioModel) throws Exception {
 
+
         Boolean validandoIdade = validadorDeMenorDeIdade(usuarioModel);
         usuarioModel.setSenha(Criptografia.md5(usuarioModel.getSenha()));
         if (validandoIdade) {
