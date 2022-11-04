@@ -1,12 +1,10 @@
 package com.catalisa.redesolidaria.controller;
 
-import com.catalisa.redesolidaria.Enums.Categorias;
 import com.catalisa.redesolidaria.model.UsuarioModel;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoLogin;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoResponse;
 import com.catalisa.redesolidaria.model.dto.UsuarioDtoSolicitacao;
 import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
-import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import com.catalisa.redesolidaria.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -70,6 +67,11 @@ public class UsuarioController {
     @PostMapping(path = "/login")
     public ResponseEntity<UsuarioDtoLogin> loginUsuario(@RequestBody UsuarioModel usuarioModel) throws Exception {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.loginUser(usuarioModel));
+    }
+
+    @PostMapping(path = "/telefone")
+    public ResponseEntity<UsuarioDtoResponse> buscarPorTelefone(@RequestBody UsuarioModel usuarioModel){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarTelefone(usuarioModel.getTelefone()));
     }
 
 }

@@ -6,14 +6,25 @@ function getLocation() {
   }
 };
 
+//function showPosition(position) {
+//   document.getElementById("latitude").value = position.coords.latitude;
+//   document.getElementById("longitude").value = position.coords.longitude;
+//};
+
 function showPosition(position) {
-   document.getElementById("latitude").value = position.coords.latitude;
-   document.getElementById("longitude").value = position.coords.longitude;
+  const lat = document.getElementById("latitude");
+  const idlat = position.coords.latitude;
+  lat.value = idlat;
+  console.log(lat.value);
+    const long = document.getElementById("longitude");
+    const idlong = position.coords.longitude;
+    long.value = idlong;
+    console.log(long.value);
+
 };
 
+
 getLocation();
-
-
 
 
 const form = document.getElementById("usuario-form")

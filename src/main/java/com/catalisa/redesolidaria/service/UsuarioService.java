@@ -10,7 +10,6 @@ import com.catalisa.redesolidaria.model.dto.VoluntarioDtoId;
 import com.catalisa.redesolidaria.repository.UsuarioRepository;
 import com.catalisa.redesolidaria.security.Criptografia;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -124,7 +123,7 @@ public class UsuarioService {
         if (voluntarioMaisProximo == null) {
             throw new RuntimeException("Nenhum voluntário encontrado!");
         }else if (menorDistancia > 4000) {
-            throw new NoSuchElementException("Nenhum voluntário encontrado!");
+            return null;
         }
 
         return new UsuarioDtoSolicitacao(voluntarioMaisProximo.getId(),
@@ -141,6 +140,16 @@ public class UsuarioService {
             return null;
         }
         return new UsuarioDtoLogin(usuario.getId(), usuario.getCategoria(), usuario.getNome());
+    }
+
+    public UsuarioDtoResponse buscarTelefone(String telefone) {
+        UsuarioModel usuario = usuarioRepository.findByTelefone(telefone);
+                if(telefone == null){
+                    throw new RuntimeException("Usuario nao encontrado");
+                }
+        return new UsuarioDtoResponse(usuario.getId(),
+                usuario.getCategoria(), usuario.getDeficiencias(), usuario.getNome(), usuario.getTelefone(), usuario.getEmail(), usuario.getLatitude(),
+                usuario.getLongitude());
     }
 
 }
